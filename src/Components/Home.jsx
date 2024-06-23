@@ -62,37 +62,37 @@ function Home() {
   ];
 
   return (
-    <main className="main-container">
-      <div className="main-title">
+    <main1 className="main1-container">
+      <div className="main1-title">
         <h3>DASHBOARD</h3>
       </div>
 
-      <div className="main-cards">
-        <div className="card">
-          <div className="card-inner">
+      <div className="main1-card1s">
+        <div className="card1">
+          <div className="card1-inner">
             <h3>AMOUNT IN USD</h3>
-            <FaDollarSign className="card_icon" />
+            <FaDollarSign className="card1_icon" />
           </div>
           <h1>300</h1>
         </div>
-        <div className="card">
-          <div className="card-inner">
+        <div className="card1">
+          <div className="card1-inner">
             <h3>AMOUNT IN KSH</h3>
-            <FaMoneyBillWave className="card_icon" />
+            <FaMoneyBillWave className="card1_icon" />
           </div>
           <h1>12</h1>
         </div>
-        <div className="card">
-          <div className="card-inner">
+        <div className="card1">
+          <div className="card1-inner">
             <h3>AMOUNT IN UGX</h3>
-            <FaMoneyBillWave className="card_icon" />
+            <FaMoneyBillWave className="card1_icon" />
           </div>
           <h1>33</h1>
         </div>
-        <div className="card">
-          <div className="card-inner">
+        <div className="card1">
+          <div className="card1-inner">
             <h3>AMOUNT IN SSD</h3>
-            <FaDollarSign className="card_icon" />
+            <FaMoneyBillWave className="card1_icon" />
           </div>
           <h1>42</h1>
         </div>
@@ -148,7 +148,7 @@ function Home() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </main>
+    </main1>
   );
 }
 

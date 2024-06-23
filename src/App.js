@@ -10,6 +10,7 @@ import Capital from "./Components/Capital";
 import Reports from "./Components/Reports";
 import Settings from "./Components/Settings";
 import LocalTransfer from "./Components/LocalTransfer";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 function App() {

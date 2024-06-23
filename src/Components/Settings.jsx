@@ -8,6 +8,7 @@ import CreateBranch from "./CreateBranch";
 import ViewBranches from "./ViewBranches";
 import UpdateBranch from "./UpdateBranch";
 import DeleteBranch from "./DeleteBranch";
+import button from "react-bootstrap/Button";
 // Import other operation components similarly
 
 const Settings = () => {
@@ -96,7 +97,7 @@ const Settings = () => {
         );
       default:
         return (
-          <div className="main-buttons">
+          <div className="main1-buttons">
             <button
               className="btn btn-secondary btn-lg"
               onClick={() => setActiveSection("user")}
@@ -130,7 +131,7 @@ const Settings = () => {
   };
 
   return (
-    <main className="main-container">
+    <main className="main1-container">
       <div className="setting-container">
         <div className="setting-left">{renderOperationComponent()}</div>
         <div className="setting-right">{renderButtons()}</div>

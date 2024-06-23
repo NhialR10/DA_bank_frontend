@@ -44,7 +44,7 @@ function Sidebar({ openSidebarToggle, setOpenSidebarToggle }) {
         </li>
         <li className="sidebar-list-item">
           <Link to="/local-transfer" onClick={() => handleLinkClick("/")}>
-            <FaExchangeAlt className="card_icon" /> Local Transfer And Banking
+            <FaExchangeAlt className="icon" /> Local Banking
           </Link>
         </li>
         <li className="sidebar-list-item">
@@ -57,12 +57,12 @@ function Sidebar({ openSidebarToggle, setOpenSidebarToggle }) {
         </li>
         <li className="sidebar-list-item">
           <Link to="/forex" onClick={() => handleLinkClick("/forex")}>
-            <FaExchangeAlt className="card_icon" /> Forex Transactions
+            <FaExchangeAlt className="icon" /> Forex Transactions
           </Link>
         </li>
         <li className="sidebar-list-item">
           <Link to="/expenses" onClick={() => handleLinkClick("/expenses")}>
-            <MdMoneyOff className="icon" /> Expenses Management
+            <FaMoneyBillWave className="icon" /> Expenses Management
           </Link>
         </li>
         <li className="sidebar-list-item">

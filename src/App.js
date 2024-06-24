@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+  const [editingUser, setEditingUser] = useState(null); // State to track which user is being edited
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
@@ -35,7 +36,15 @@ function App() {
           <Route path="/capital_operations" element={<Capital />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/local-transfer" element={<LocalTransfer />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/settings"
+            element={
+              <Settings
+                setEditingUser={setEditingUser}
+                editingUser={editingUser}
+              />
+            }
+          />
           <Route path="/momo_mpessa" element={<MpessaMomo />} />
           <Route path="/expenses" element={<Expenses />} />
         </Routes>

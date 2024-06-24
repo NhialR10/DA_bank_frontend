@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import CreateUser from "./CreateUser";
 import ViewUsers from "./ViewUsers";
@@ -8,17 +8,23 @@ import CreateBranch from "./CreateBranch";
 import ViewBranches from "./ViewBranches";
 import UpdateBranch from "./UpdateBranch";
 import DeleteBranch from "./DeleteBranch";
-import button from "react-bootstrap/Button";
-// Import other operation components similarly
+import { UserContext } from "./UserContext";
 
-const Settings = () => {
-  const [activeSection, setActiveSection] = useState(null);
-  const [activeOperation, setActiveOperation] = useState(null);
+// Import other operation components similarly
+const Settings = ({ editingUser, setEditingUser }) => {
+  const handleCancelUpdate = () => {
+    setActiveSection(null); // Clear editing user to close the update form
+  };
+  const {
+    activeSection,
+    setActiveSection,
+    activeOperation,
+    setActiveOperation,
+  } = useContext(UserContext);
 
   const handleUserOperation = (operation) => {
     setActiveOperation(operation);
   };
-
   const handleBranchOperation = (operation) => {
     setActiveOperation(operation);
   };
@@ -120,9 +126,17 @@ const Settings = () => {
       case "create":
         return activeSection === "user" ? <CreateUser /> : <CreateBranch />;
       case "view":
-        return activeSection === "user" ? <ViewUsers /> : <ViewBranches />;
+        return activeSection === "user" ? (
+          <ViewUsers setEditingUser={setEditingUser} />
+        ) : (
+          <ViewBranches />
+        );
       case "update":
-        return activeSection === "user" ? <UpdateUser /> : <UpdateBranch />;
+        return activeSection === "user" ? (
+          <UpdateUser onCancel={handleCancelUpdate} user={editingUser} />
+        ) : (
+          <UpdateBranch />
+        );
       case "delete":
         return activeSection === "user" ? <DeleteUser /> : <DeleteBranch />;
       default:

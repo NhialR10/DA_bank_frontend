@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import axios from "axios";
+import { UserContext } from "./UserContext";
 
 const CreateUser = () => {
+  const { user, setUser, resetUser, createUser } = useContext(UserContext);
+  const [loading, setLoading] = useState(false); // State to handle loading state
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true); // Set loading state to true during form submission
+    try {
+      await createUser(user); // Call createUser function from context
+      resetUser(); // Clear form fields after successful creation
+      console.log("User created successfully!");
+    } catch (error) {
+      console.error("Error creating user:", error);
+      // Handle error (e.g., display error message)
+    } finally {
+      setLoading(false); // Reset loading state after request completes
+    }
+  };
+
   return (
     <div>
-      <form className="row g-3" autoComplete="off">
+      <form className="row g-3" autoComplete="off" onSubmit={handleSubmit}>
         <div className="col-md-4">
           <label htmlFor="validationServer01" className="form-label">
             First name
@@ -13,7 +41,10 @@ const CreateUser = () => {
             className="form-control custom-input"
             id="validationServer01"
             placeholder="First Name"
+            name="name"
             autoComplete="off"
+            value={user.name}
+            onChange={handleChange}
             required
           />
         </div>
@@ -27,7 +58,10 @@ const CreateUser = () => {
             id="validationServer02"
             placeholder="Last Name"
             required
+            name="lastname"
             autoComplete="off"
+            value={user.lastname}
+            onChange={handleChange}
           />
         </div>
         <div className="col-md-4">
@@ -39,8 +73,11 @@ const CreateUser = () => {
             className="form-control custom-input"
             id="validationServerEmail"
             placeholder="nhiallual@gmail.com"
+            name="email"
             autoComplete="off"
             required
+            value={user.email}
+            onChange={handleChange}
           />
         </div>
 
@@ -53,8 +90,11 @@ const CreateUser = () => {
             className="form-control custom-input"
             id="validationServerPassword"
             placeholder="Password"
+            name="password"
             required
             autoComplete="new-password"
+            value={user.password}
+            onChange={handleChange}
           />
         </div>
 
@@ -67,12 +107,13 @@ const CreateUser = () => {
             id="validationServerRole"
             aria-describedby="validationServerRoleFeedback"
             required
+            value={user.role}
+            name="role"
+            onChange={handleChange}
           >
-            <option selected disabled value="">
-              Choose...
-            </option>
-            <option>User</option>
-            <option>Admin</option>
+            <option value="">Choose...</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
           </select>
           <div id="validationServerRoleFeedback" className="invalid-feedback">
             Please select a valid role.
@@ -88,14 +129,17 @@ const CreateUser = () => {
             className="form-control custom-input"
             id="validationServerPhone"
             placeholder="Phone"
+            name="phone"
             required
             autoComplete="off"
+            value={user.phone}
+            onChange={handleChange}
           />
         </div>
 
         <div className="col-12">
-          <button className="btn btn-primary" type="submit">
-            Create
+          <button className="btn btn-primary" type="submit" disabled={loading}>
+            {loading ? "Creating..." : "Create"}
           </button>
         </div>
       </form>

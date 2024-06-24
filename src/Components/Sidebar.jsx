@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaExchangeAlt, FaMoneyBillWave } from "react-icons/fa";
 import { RiExchangeFundsLine } from "react-icons/ri";
-import { MdMoneyOff } from "react-icons/md";
+
 import {
   BsGrid1X2Fill,
   BsMenuButtonWideFill,
@@ -10,7 +10,6 @@ import {
 } from "react-icons/bs";
 
 function Sidebar({ openSidebarToggle, setOpenSidebarToggle }) {
-  const location = useLocation();
   const [selectedLink, setSelectedLink] = useState(null);
 
   const handleLinkClick = (path) => {

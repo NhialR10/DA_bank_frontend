@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import CreateUser from "./CreateUser";
 import ViewUsers from "./ViewUsers";
@@ -11,7 +11,12 @@ import DeleteBranch from "./DeleteBranch";
 import { UserContext } from "./UserContext";
 
 // Import other operation components similarly
-const Settings = ({ editingUser, setEditingUser }) => {
+const Settings = ({
+  editingUser,
+  setEditingUser,
+  seteditBranch,
+  editBranch,
+}) => {
   const handleCancelUpdate = () => {
     setActiveSection(null); // Clear editing user to close the update form
   };
@@ -21,7 +26,7 @@ const Settings = ({ editingUser, setEditingUser }) => {
     activeOperation,
     setActiveOperation,
   } = useContext(UserContext);
-
+  const [updatedbranch, setupdatedBranch] = useState(null);
   const handleUserOperation = (operation) => {
     setActiveOperation(operation);
   };
@@ -45,18 +50,6 @@ const Settings = ({ editingUser, setEditingUser }) => {
               onClick={() => handleUserOperation("view")}
             >
               View Users
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleUserOperation("update")}
-            >
-              Update User
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleUserOperation("delete")}
-            >
-              Delete User
             </button>
             <button
               className="btn btn-primary"
@@ -124,18 +117,27 @@ const Settings = ({ editingUser, setEditingUser }) => {
   const renderOperationComponent = () => {
     switch (activeOperation) {
       case "create":
-        return activeSection === "user" ? <CreateUser /> : <CreateBranch />;
+        return activeSection === "user" ? (
+          <CreateUser editBranch={editBranch} />
+        ) : (
+          <CreateBranch />
+        );
       case "view":
         return activeSection === "user" ? (
           <ViewUsers setEditingUser={setEditingUser} />
         ) : (
-          <ViewBranches />
+          <ViewBranches
+            handleUserOperation={handleUserOperation}
+            setActiveSection={setActiveSection}
+            seteditBranch={seteditBranch}
+            setupdatedBranch={setupdatedBranch}
+          />
         );
       case "update":
         return activeSection === "user" ? (
           <UpdateUser onCancel={handleCancelUpdate} user={editingUser} />
         ) : (
-          <UpdateBranch />
+          <UpdateBranch updatedbranch={updatedbranch} />
         );
       case "delete":
         return activeSection === "user" ? <DeleteUser /> : <DeleteBranch />;

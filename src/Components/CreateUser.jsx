@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
+
 import { UserContext } from "./UserContext";
 
-const CreateUser = () => {
+const CreateUser = ({ editBranch }) => {
   const { user, setUser, resetUser, createUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false); // State to handle loading state
 
@@ -10,6 +10,7 @@ const CreateUser = () => {
     const { name, value } = e.target;
     setUser((prevData) => ({
       ...prevData,
+      branchId: editBranch._id,
       [name]: value,
     }));
   };

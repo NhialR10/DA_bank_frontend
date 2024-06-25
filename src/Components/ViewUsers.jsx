@@ -24,7 +24,7 @@ const ViewUsers = ({ setEditingUser }) => {
   const handleDelete = async (userId) => {
     try {
       await deleteUser(userId);
-      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+      setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
       console.log("User deleted successfully!");
     } catch (error) {
       console.error(`Error deleting user with ID ${userId}:`, error);
@@ -71,7 +71,7 @@ const ViewUsers = ({ setEditingUser }) => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
+            <tr key={user._id}>
               <td>{user.name}</td>
               <td>{user.lastname}</td>
               <td>{user.phone}</td>

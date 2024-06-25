@@ -85,6 +85,9 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const handleUserOperation = (operation) => {
+    setActiveOperation(operation);
+  };
   return (
     <UserContext.Provider
       value={{
@@ -99,6 +102,7 @@ export const UserProvider = ({ children }) => {
         setActiveSection,
         activeOperation,
         setActiveOperation,
+        handleUserOperation,
       }}
     >
       {children}

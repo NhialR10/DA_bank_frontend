@@ -16,6 +16,7 @@ import "./App.css";
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const [editingUser, setEditingUser] = useState(null); // State to track which user is being edited
+  const [editBranch, seteditBranch] = useState(null);
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
@@ -40,6 +41,8 @@ function App() {
             path="/settings"
             element={
               <Settings
+                seteditBranch={seteditBranch}
+                editBranch={editBranch}
                 setEditingUser={setEditingUser}
                 editingUser={editingUser}
               />

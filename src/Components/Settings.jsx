@@ -19,6 +19,7 @@ const Settings = ({
 }) => {
   const handleCancelUpdate = () => {
     setActiveSection(null); // Clear editing user to close the update form
+    setActiveOperation(null);
   };
   const {
     activeSection,
@@ -34,6 +35,10 @@ const Settings = ({
     setActiveOperation(operation);
   };
 
+  const onBackButtonClick = () => {
+    setActiveSection(null); // Clear editing user to close the update form
+    setActiveOperation(null);
+  };
   const renderButtons = () => {
     switch (activeSection) {
       case "user":
@@ -53,7 +58,7 @@ const Settings = ({
             </button>
             <button
               className="btn btn-primary"
-              onClick={() => setActiveSection(null)}
+              onClick={() => onBackButtonClick()}
             >
               Back
             </button>
@@ -74,21 +79,10 @@ const Settings = ({
             >
               View Branches
             </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleBranchOperation("update")}
-            >
-              Update Branch
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleBranchOperation("delete")}
-            >
-              Delete Branch
-            </button>
+
             <button
               className="btn btn-primary"
-              onClick={() => setActiveSection(null)}
+              onClick={() => onBackButtonClick()}
             >
               Back
             </button>
@@ -137,7 +131,10 @@ const Settings = ({
         return activeSection === "user" ? (
           <UpdateUser onCancel={handleCancelUpdate} user={editingUser} />
         ) : (
-          <UpdateBranch updatedbranch={updatedbranch} />
+          <UpdateBranch
+            onCancel={handleCancelUpdate}
+            updatedbranch={updatedbranch}
+          />
         );
       case "delete":
         return activeSection === "user" ? <DeleteUser /> : <DeleteBranch />;

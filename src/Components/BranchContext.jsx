@@ -45,16 +45,16 @@ export const BranchProvider = ({ children }) => {
   };
 
   // Function to update an existing user
-  const updateUser = async (userId, userData) => {
+  const updateBranches = async (branchId, branchData) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/branches/update/${userId}`,
-        userData
+        `http://localhost:8000/api/branches/update/${branchId}`,
+        branchData
       );
       console.log("User updated:", response.data);
       return response.data; // Return updated user data or ID if needed
     } catch (error) {
-      console.error(`Error updating user with ID ${userId}:`, error);
+      console.error(`Error updating user with ID ${branchId}:`, error);
       throw error; // Rethrow the error to handle it in the component
     }
   };
@@ -73,7 +73,7 @@ export const BranchProvider = ({ children }) => {
         retserFields,
         fetchBranches,
         deleteBranch,
-        updateUser,
+        updateBranches,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { BranchContext } from "./BranchContext";
 
 const UpdateBranch = ({ onCancel, updatedbranch }) => {
-  const { updateUser } = useContext(BranchContext);
+  const { updateBranches } = useContext(BranchContext);
 
   const [updateBranch, setUpdatedBranch] = useState({
     name: "",
@@ -32,7 +32,7 @@ const UpdateBranch = ({ onCancel, updatedbranch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateUser(updateBranch._id, updateBranch);
+      await updateBranches(updateBranch._id, updateBranch);
       onCancel(); // Close the update form after successful update
     } catch (error) {
       console.error("Error updating branch:", error);

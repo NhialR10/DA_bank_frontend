@@ -72,7 +72,7 @@ const ViewUsers = ({ setEditingUser }) => {
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-              <td>{user.name}</td>
+              <td>{user.firstname}</td>
               <td>{user.lastname}</td>
               <td>{user.phone}</td>
               <td>{user.role}</td>

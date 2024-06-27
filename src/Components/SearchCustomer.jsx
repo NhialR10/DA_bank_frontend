@@ -1,9 +1,10 @@
 import React from "react";
+import DisplayUserAndAccount from "./DisplayUserAndAccount";
 
 const SearchCustomer = () => {
   return (
     <div>
-      <h3>Search Customer</h3>
+      <DisplayUserAndAccount />
     </div>
   );
 };

@@ -10,7 +10,7 @@ const CreateUser = ({ editBranch }) => {
     const { name, value } = e.target;
     setUser((prevData) => ({
       ...prevData,
-      branchId: editBranch._id,
+      ...(editBranch ? { branchId: editBranch._id } : {}), // Conditionally add branchId
       [name]: value,
     }));
   };
@@ -42,9 +42,9 @@ const CreateUser = ({ editBranch }) => {
             className="form-control custom-input"
             id="validationServer01"
             placeholder="First Name"
-            name="name"
+            name="firstname"
             autoComplete="off"
-            value={user.name}
+            value={user.firstname}
             onChange={handleChange}
             required
           />

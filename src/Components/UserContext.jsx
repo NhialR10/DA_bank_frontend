@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [activeSection, setActiveSection] = useState(null);
   const [activeOperation, setActiveOperation] = useState(null);
   const [user, setUser] = useState({
-    name: "",
+    firstname: "",
     lastname: "",
     email: "",
     password: "",
@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
 
   const resetUser = () => {
     setUser({
-      name: "",
+      firstname: "",
       lastname: "",
       email: "",
       password: "",

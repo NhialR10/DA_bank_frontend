@@ -334,4 +334,10 @@ body {
   .hedaer-left {
     display: none;
   }
+  .user-display table {
+    font-size: 12px; /* Smaller font size for smaller screens */
+  }
+  .user-display .btn {
+    font-size: 10px; /* Smaller button text for smaller screens */
+  }
 }

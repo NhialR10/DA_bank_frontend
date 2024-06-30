@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
-const Deposit = ({ accountToOperateOn }) => {
+const Borrow = ({ accountToOperateOn }) => {
   const { userLogin } = useContext(AuthContext); // Access userLogin from context
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [transaction, setTransaction] = useState({
     amount: "",
-    type: "deposit",
+    type: "withdrawal",
   });
 
   const resetForm = () => {
@@ -44,7 +44,7 @@ const Deposit = ({ accountToOperateOn }) => {
       resetForm();
     } catch (error) {
       console.error("Error creating account:", error);
-      setError("Failed to deposit. Please try again."); // Set error message
+      setError("Failed to create account. Please try again."); // Set error message
     } finally {
       setLoading(false);
     }
@@ -54,13 +54,13 @@ const Deposit = ({ accountToOperateOn }) => {
       <form className="row g-3" autoComplete="off" onSubmit={handleSubmit}>
         <div className="col-md-4">
           <label htmlFor="validationServer01" className="form-label">
-            Deposit Amount
+            Withdraw Amount
           </label>
           <input
             type="text"
             className="form-control custom-input"
             id="validationServer01"
-            placeholder="Deposit"
+            placeholder="Withdraw"
             name="amount"
             autoComplete="off"
             onChange={handleChange}
@@ -70,7 +70,7 @@ const Deposit = ({ accountToOperateOn }) => {
         </div>
         <div className="col-12">
           <button className="btn btn-primary" type="submit" disabled={loading}>
-            {loading ? "Dpositing..." : "Deposit"}
+            {loading ? "Withdrawing..." : "Withdraw"}
           </button>
         </div>
         {error && (
@@ -85,4 +85,4 @@ const Deposit = ({ accountToOperateOn }) => {
   );
 };
 
-export default Deposit;
+export default Borrow;

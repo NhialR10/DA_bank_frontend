@@ -8,6 +8,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [activeSection, setActiveSection] = useState(null);
   const [activeOperation, setActiveOperation] = useState(null);
+  const [userLogin, setUserLogin] = useState(null);
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -103,6 +104,8 @@ export const UserProvider = ({ children }) => {
         activeOperation,
         setActiveOperation,
         handleUserOperation,
+        setUserLogin,
+        userLogin,
       }}
     >
       {children}

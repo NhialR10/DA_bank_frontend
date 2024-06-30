@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import CreateCustomer from "./CreateCustomer";
 import SearchCustomer from "./SearchCustomer";
 import BranchTransfer from "./BranchTransfer"; // Assuming you have this component
+import CreateAccount from "./CreateAccount";
+import Deposit from "./Deposit";
+import Withdraw from "./Withdraw";
+import Borrow from "./Borrow";
 
 const LocalTransfer = () => {
   const [activeOperation, setActiveOperation] = useState(null);
-
+  const [accountToOperateOn, setAccountToOperateOn] = useState(null);
   const handleOperation = (operation) => {
     setActiveOperation(operation);
   };
@@ -15,9 +19,22 @@ const LocalTransfer = () => {
       case "createCustomer":
         return <CreateCustomer />;
       case "searchCustomer":
-        return <SearchCustomer />;
+        return (
+          <SearchCustomer
+            setAccountToOperateOn={setAccountToOperateOn}
+            setActiveOperation={setActiveOperation}
+          />
+        );
       case "branchTransfer":
         return <BranchTransfer />;
+      case "createAccount":
+        return <CreateAccount />;
+      case "deposit":
+        return <Deposit accountToOperateOn={accountToOperateOn} />;
+      case "withdrawal":
+        return <Withdraw accountToOperateOn={accountToOperateOn} />;
+      case "borrow":
+        return <Borrow accountToOperateOn={accountToOperateOn} />;
       default:
         return <div>Please select an operation</div>;
     }
@@ -46,6 +63,12 @@ const LocalTransfer = () => {
               onClick={() => handleOperation("branchTransfer")}
             >
               Branch Transfer
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleOperation("createAccount")}
+            >
+              Create Account
             </button>
           </div>
         </div>

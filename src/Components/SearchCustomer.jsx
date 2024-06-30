@@ -1,10 +1,13 @@
 import React from "react";
 import DisplayUserAndAccount from "./DisplayUserAndAccount";
 
-const SearchCustomer = () => {
+const SearchCustomer = ({ setActiveOperation, setAccountToOperateOn }) => {
   return (
     <div>
-      <DisplayUserAndAccount />
+      <DisplayUserAndAccount
+        setAccountToOperateOn={setAccountToOperateOn}
+        setActiveOperation={setActiveOperation}
+      />
     </div>
   );
 };

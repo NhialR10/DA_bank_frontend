@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import SearchBox from "./SearchBox"; // Import the SearchBox component
 import axios from "axios";
-const DisplayUserAndAccount = () => {
+const DisplayUserAndAccount = ({
+  setActiveOperation,
+  setAccountToOperateOn,
+}) => {
   const [customer, setCustomer] = useState(null); // State to hold the customer details
   const [searchResult, setSearchResult] = useState(""); // State to handle the search result message
 
@@ -23,6 +26,10 @@ const DisplayUserAndAccount = () => {
       setCustomer(null);
       setSearchResult("No customer found");
     }
+  };
+
+  const handleAcount = (account) => {
+    setAccountToOperateOn(account);
   };
 
   return (
@@ -58,13 +65,37 @@ const DisplayUserAndAccount = () => {
                 <td>{account.user.firstname}</td>
                 <td>{account.balance}</td>
                 <td>
-                  <button className="btn btn-primary">Deposit</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      setActiveOperation("deposit");
+                      handleAcount(account);
+                    }}
+                  >
+                    Deposit
+                  </button>
                 </td>
                 <td>
-                  <button className="btn btn-secondary">Withdraw</button>
+                  <button
+                    onClick={() => {
+                      setActiveOperation("withdrawal");
+                      handleAcount(account);
+                    }}
+                    className="btn btn-secondary"
+                  >
+                    Withdraw
+                  </button>
                 </td>
                 <td>
-                  <button className="btn btn-secondary">Borrow</button>
+                  <button
+                    onClick={() => {
+                      setActiveOperation("borrow");
+                      handleAcount(account);
+                    }}
+                    className="btn btn-secondary"
+                  >
+                    Borrow
+                  </button>
                 </td>
               </tr>
             ))}

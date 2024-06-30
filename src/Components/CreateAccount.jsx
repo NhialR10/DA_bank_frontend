@@ -1,24 +1,26 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "./AuthContext";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-const Deposit = ({ accountToOperateOn }) => {
+import { AuthContext } from "./AuthContext";
+
+const CreateAccount = () => {
   const { userLogin } = useContext(AuthContext); // Access userLogin from context
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [transaction, setTransaction] = useState({
-    amount: "",
-    type: "deposit",
+  const [account, setAccount] = useState({
+    customerCode: "",
+    currency: "",
   });
 
   const resetForm = () => {
-    setTransaction({
-      amount: "",
+    setAccount({
+      customerCode: "",
+      currency: "",
     });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTransaction((prevData) => ({
+    setAccount((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -30,47 +32,72 @@ const Deposit = ({ accountToOperateOn }) => {
     setError(null); // Reset error state
 
     try {
+      console.log(userLogin);
       const response = await axios.post(
-        `http://localhost:8000/api/transactions/create/${accountToOperateOn._id}`,
-        transaction,
+        "http://localhost:8000/api/accounts/create",
+        account,
         {
           headers: {
             Authorization: `Bearer ${userLogin}`, // Include token in headers
           },
         }
       );
-      console.log(accountToOperateOn._id);
+
       console.log("Account created:", response.data);
       resetForm();
     } catch (error) {
       console.error("Error creating account:", error);
-      setError("Failed to deposit. Please try again."); // Set error message
+      setError("Failed to create account. Please try again."); // Set error message
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div>
       <form className="row g-3" autoComplete="off" onSubmit={handleSubmit}>
         <div className="col-md-4">
           <label htmlFor="validationServer01" className="form-label">
-            Deposit Amount
+            Customer ID
           </label>
           <input
             type="text"
             className="form-control custom-input"
             id="validationServer01"
-            placeholder="Deposit"
-            name="amount"
+            placeholder="Customer Id"
+            name="customerCode"
             autoComplete="off"
             onChange={handleChange}
-            value={transaction.amount} // Bind value to state
+            value={account.customerCode} // Bind value to state
             required
           />
         </div>
+
+        <div className="col-md-3">
+          <label htmlFor="validationServerRole" className="form-label">
+            Currency
+          </label>
+          <select
+            className="form-select custom-input"
+            id="validationServerRole"
+            aria-describedby="validationServerRoleFeedback"
+            required
+            onChange={handleChange}
+            name="currency"
+            value={account.currency} // Bind value to state
+          >
+            <option value="">Choose...</option>
+            <option value="ssp">SSP</option>
+            <option value="usd">USD</option>
+          </select>
+          <div id="validationServerRoleFeedback" className="invalid-feedback">
+            Please select a valid currency.
+          </div>
+        </div>
+
         <div className="col-12">
           <button className="btn btn-primary" type="submit" disabled={loading}>
-            {loading ? "Dpositing..." : "Deposit"}
+            {loading ? "Creating..." : "Create"}
           </button>
         </div>
         {error && (
@@ -85,4 +112,4 @@ const Deposit = ({ accountToOperateOn }) => {
   );
 };
 
-export default Deposit;
+export default CreateAccount;

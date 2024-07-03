@@ -23,7 +23,7 @@ const Login = () => {
       );
 
       // Save token to local storage and update user state
-      login(response.data.token);
+      login(response.data);
       navigate("/");
     } catch (err) {
       setError("Invalid email or password");

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = ({ onSearch, placeholder }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (e) => {
@@ -17,7 +17,7 @@ const SearchBox = ({ onSearch }) => {
       <input
         className="form-control mr-sm-2"
         type="search"
-        placeholder="Search"
+        placeholder={placeholder}
         aria-label="Search"
         value={searchTerm}
         onChange={handleInputChange}

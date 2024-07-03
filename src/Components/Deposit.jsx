@@ -30,20 +30,19 @@ const Deposit = ({ accountToOperateOn }) => {
     setError(null); // Reset error state
 
     try {
+      console.log(accountToOperateOn._id);
       const response = await axios.post(
         `http://localhost:8000/api/transactions/create/${accountToOperateOn._id}`,
         transaction,
         {
           headers: {
-            Authorization: `Bearer ${userLogin}`, // Include token in headers
+            Authorization: `Bearer ${userLogin.token}`, // Include token in headers
           },
         }
       );
-      console.log(accountToOperateOn._id);
-      console.log("Account created:", response.data);
       resetForm();
     } catch (error) {
-      console.error("Error creating account:", error);
+      console.error("Error depositing:", error);
       setError("Failed to deposit. Please try again."); // Set error message
     } finally {
       setLoading(false);

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaDollarSign, FaMoneyBillWave } from "react-icons/fa";
-
+import axios from "axios";
+import { AuthContext } from "./AuthContext";
 import {
   BarChart,
   Bar,
@@ -14,8 +15,10 @@ import {
   LineChart,
   Line,
 } from "recharts";
-
+const { formatNumber } = require("../utils");
 function Home() {
+  const { userLogin } = useContext(AuthContext);
+  const [activeBranch, setActiveBranch] = useState({});
   const data = [
     {
       name: "Page A",
@@ -61,10 +64,26 @@ function Home() {
     },
   ];
 
+  useEffect(() => {
+    // Fetch users when component mounts
+    const getActiveBranch = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/api/branches/get-branch/${userLogin.branch._id}`
+        );
+        setActiveBranch(response.data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    getActiveBranch();
+  }, [userLogin]); // Trigger fetchUsers() when fetchUsers changes
+  console.log(activeBranch);
   return (
     <main1 className="main1-container">
       <div className="main1-title">
-        <h3>DASHBOARD</h3>
+        <h3>{activeBranch.name} </h3>
       </div>
 
       <div className="main1-card1s">
@@ -73,28 +92,28 @@ function Home() {
             <h3>AMOUNT IN USD</h3>
             <FaDollarSign className="card1_icon" />
           </div>
-          <h1>300</h1>
+          <h1>{formatNumber(activeBranch.dollarsAmount)} </h1>
         </div>
         <div className="card1">
           <div className="card1-inner">
             <h3>AMOUNT IN KSH</h3>
             <FaMoneyBillWave className="card1_icon" />
           </div>
-          <h1>12</h1>
+          <h1>{formatNumber(activeBranch.kshAmount)}</h1>
         </div>
         <div className="card1">
           <div className="card1-inner">
             <h3>AMOUNT IN UGX</h3>
             <FaMoneyBillWave className="card1_icon" />
           </div>
-          <h1>33</h1>
+          <h1>{formatNumber(activeBranch.ugxAmount)}</h1>
         </div>
         <div className="card1">
           <div className="card1-inner">
             <h3>AMOUNT IN SSD</h3>
             <FaMoneyBillWave className="card1_icon" />
           </div>
-          <h1>42</h1>
+          <h1>{formatNumber(activeBranch.sspAmount)}</h1>
         </div>
       </div>
 

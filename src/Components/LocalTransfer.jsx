@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import CreateCustomer from "./CreateCustomer";
 import SearchCustomer from "./SearchCustomer";
-import BranchTransfer from "./BranchTransfer"; // Assuming you have this component
 import CreateAccount from "./CreateAccount";
 import Deposit from "./Deposit";
 import Withdraw from "./Withdraw";
 import Borrow from "./Borrow";
+import SendToBranch from "./SendToBranch";
+import RecieveFromBranch from "./RecieveFromBranch";
 
 const LocalTransfer = () => {
   const [activeOperation, setActiveOperation] = useState(null);
@@ -25,8 +26,8 @@ const LocalTransfer = () => {
             setActiveOperation={setActiveOperation}
           />
         );
-      case "branchTransfer":
-        return <BranchTransfer />;
+      case "send":
+        return <SendToBranch />;
       case "createAccount":
         return <CreateAccount />;
       case "deposit":
@@ -35,6 +36,8 @@ const LocalTransfer = () => {
         return <Withdraw accountToOperateOn={accountToOperateOn} />;
       case "borrow":
         return <Borrow accountToOperateOn={accountToOperateOn} />;
+      case "recieve":
+        return <RecieveFromBranch />;
       default:
         return <div>Please select an operation</div>;
     }
@@ -60,9 +63,15 @@ const LocalTransfer = () => {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => handleOperation("branchTransfer")}
+              onClick={() => handleOperation("send")}
             >
-              Branch Transfer
+              Send To Branch
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleOperation("recieve")}
+            >
+              Recieve From Branch
             </button>
             <button
               className="btn btn-secondary"

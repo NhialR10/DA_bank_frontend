@@ -32,13 +32,12 @@ const CreateAccount = () => {
     setError(null); // Reset error state
 
     try {
-      console.log(userLogin);
       const response = await axios.post(
         "http://localhost:8000/api/accounts/create",
         account,
         {
           headers: {
-            Authorization: `Bearer ${userLogin}`, // Include token in headers
+            Authorization: `Bearer ${userLogin.token}`, // Include token in headers
           },
         }
       );

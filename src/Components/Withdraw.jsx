@@ -35,11 +35,11 @@ const Withdraw = ({ accountToOperateOn }) => {
         transaction,
         {
           headers: {
-            Authorization: `Bearer ${userLogin}`, // Include token in headers
+            Authorization: `Bearer ${userLogin.token}`, // Include token in headers
           },
         }
       );
-      console.log(accountToOperateOn._id);
+
       console.log("Account created:", response.data);
       resetForm();
     } catch (error) {

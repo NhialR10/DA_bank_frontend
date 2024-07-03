@@ -15,7 +15,6 @@ const DisplayUserAndAccount = ({
       );
       if (response.data) {
         setCustomer(response.data);
-        console.log(response.data);
         setSearchResult("");
       } else {
         setCustomer(null);
@@ -34,7 +33,7 @@ const DisplayUserAndAccount = ({
 
   return (
     <div className="user-display">
-      <SearchBox onSearch={handleSearch} />
+      <SearchBox placeholder="Customer Code" onSearch={handleSearch} />
       {customer ? (
         <table className="table caption-top user-display">
           <caption
@@ -62,7 +61,9 @@ const DisplayUserAndAccount = ({
             {customer.accounts.map((account, index) => (
               <tr key={index}>
                 <td>{account.currency === "usd" ? "USD" : "SSP"}</td>
-                <td>{account.user.firstname}</td>
+                <td>
+                  {account.user.firstname} {account.user.lastname}
+                </td>
                 <td>{account.balance}</td>
                 <td>
                   <button

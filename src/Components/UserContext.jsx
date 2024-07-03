@@ -9,6 +9,7 @@ export const UserProvider = ({ children }) => {
   const [activeSection, setActiveSection] = useState(null);
   const [activeOperation, setActiveOperation] = useState(null);
   const [userLogin, setUserLogin] = useState(null);
+
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",

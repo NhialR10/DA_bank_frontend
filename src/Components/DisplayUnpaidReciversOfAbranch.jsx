@@ -1,27 +1,51 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SearchBox from "./SearchBox"; // Import the SearchBox component
 import axios from "axios";
+import { AuthContext } from "./AuthContext";
+const { formatNumber } = require("../utils");
 const DisplayUnpaidReciversOfAbranch = () => {
-  const [customer, setCustomer] = useState(null); // State to hold the customer details
+  const { userLogin } = useContext(AuthContext); // Access userLogin from context
+  const [unpaidReceiver, setUnpaidReceiver] = useState(null); // State to hold the customer details
   const [searchResult, setSearchResult] = useState(""); // State to handle the search result message
 
   const handleSearch = async (searchTerm) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/customers/get-A-Customer/${searchTerm}`
+        `http://localhost:8000/api/branchToBranchTransfer/unpaid-receiver/${searchTerm}`,
+        {
+          headers: {
+            Authorization: `Bearer ${userLogin.token}`, // Include token in headers
+          },
+        }
       );
+      console.log(response.data);
       if (response.data) {
-        setCustomer(response.data);
-
+        setUnpaidReceiver(response.data);
         setSearchResult("");
       } else {
-        setCustomer(null);
-        setSearchResult("No customer found");
+        setUnpaidReceiver(null);
+        setSearchResult("No unpaid receiver found");
       }
     } catch (error) {
+      console.error("Error making payment:", error);
+      setUnpaidReceiver(null);
+    }
+  };
+
+  const handlePay = async (id) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8000/api/branchToBranchTransfer/receive/${id}`,
+        unpaidReceiver,
+        {
+          headers: {
+            Authorization: `Bearer ${userLogin.token}`, // Include token in headers
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
       console.error("Error fetching customer:", error);
-      setCustomer(null);
-      setSearchResult("No customer found");
     }
   };
 
@@ -31,42 +55,55 @@ const DisplayUnpaidReciversOfAbranch = () => {
     <div className="user-display">
       <SearchBox placeholder="Reciever's Code" onSearch={handleSearch} />
 
-      <table className="table caption-top user-display">
-        <caption
-          style={{
-            color: "#2962ff",
-            textAlign: "center",
-            textTransform: "capitalize",
-            fontWeight: "700",
-            fontSize: "20px",
-          }}
-        >
-          unpaid customer
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Sender</th>
-            <th scope="col">Reciever</th>
-            <th scope="col">Reciever No.</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Confirm</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>07/07/2027</td>
-            <td>Nhial Lual</td>
-            <td>Achok Yolo</td>
-            <td>0956608743</td>
-            <td>10,000</td>
+      {unpaidReceiver ? (
+        <table className="table caption-top user-display">
+          <caption
+            style={{
+              color: "#2962ff",
+              textAlign: "center",
+              textTransform: "capitalize",
+              fontWeight: "700",
+              fontSize: "20px",
+            }}
+          >
+            unpaid customer
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Sender</th>
+              <th scope="col">Reciever</th>
+              <th scope="col">Reciever No.</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Confirm</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{unpaidReceiver[0].timestamp.slice(0, 10)}</td>
+              <td>{unpaidReceiver[0].firstname}</td>
+              <td>{unpaidReceiver[0].Rfirstname}</td>
+              <td>{unpaidReceiver[0].Rphone}</td>
+              <td>{formatNumber(unpaidReceiver[0].amount)}</td>
 
-            <td>
-              <button className="btn btn-primary">Pay</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td>
+                <button
+                  onClick={() => handlePay(unpaidReceiver[0]._id)}
+                  className="btn btn-primary"
+                >
+                  {unpaidReceiver[0].isReceived ? "Received" : "Pay"}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      ) : (
+        searchResult && (
+          <div className="mt-3">
+            <h5>{searchResult}</h5>
+          </div>
+        )
+      )}
     </div>
   );
 };

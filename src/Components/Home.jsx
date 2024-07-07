@@ -110,7 +110,7 @@ function Home() {
         </div>
         <div className="card1">
           <div className="card1-inner">
-            <h3>AMOUNT IN SSD</h3>
+            <h3>AMOUNT IN SSP</h3>
             <FaMoneyBillWave className="card1_icon" />
           </div>
           <h1>{formatNumber(activeBranch.sspAmount)}</h1>

@@ -18,7 +18,6 @@ const DisplayUnpaidReciversOfAbranch = () => {
           },
         }
       );
-      console.log(response.data);
       if (response.data) {
         setUnpaidReceiver(response.data);
         setSearchResult("");
@@ -27,8 +26,8 @@ const DisplayUnpaidReciversOfAbranch = () => {
         setSearchResult("No unpaid receiver found");
       }
     } catch (error) {
-      console.error("Error making payment:", error);
-      setUnpaidReceiver(null);
+      setUnpaidReceiver(null); // Clear unpaidReceiver state on error
+      setSearchResult("No unpaid receiver found.");
     }
   };
 
@@ -43,13 +42,12 @@ const DisplayUnpaidReciversOfAbranch = () => {
           },
         }
       );
-      console.log(response.data);
+      alert("Receiver paid successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error fetching customer:", error);
     }
   };
-
-  const handleAcount = (account) => {};
 
   return (
     <div className="user-display">
@@ -101,6 +99,7 @@ const DisplayUnpaidReciversOfAbranch = () => {
         searchResult && (
           <div className="mt-3">
             <h5>{searchResult}</h5>
+            {console.log(unpaidReceiver)}
           </div>
         )
       )}

@@ -46,15 +46,15 @@ const MomoMpessaSend = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    if (formData.receiverBranch === "") {
+
+    if (formData.CurrencyToReceive === "" || formData.CurrencyToSend === "") {
       setIsValid(false);
     } else {
       setIsValid(true);
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/branchToBranchTransfer/create",
+          "http://localhost:8000/api/MomoMpesa/send",
           formData,
           {
             headers: {
@@ -64,11 +64,12 @@ const MomoMpessaSend = () => {
         );
 
         ResetFormField();
-        console.log(response.data);
+        alert("Sending record saved Successfully!");
       } catch (error) {
         console.error("Error creating user:", error);
       } finally {
         setLoading(false);
+        alert("Sending record saved Successfully!");
       }
     }
   };

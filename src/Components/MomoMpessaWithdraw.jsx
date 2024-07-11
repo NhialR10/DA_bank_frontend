@@ -49,7 +49,7 @@ const MomoMpessaWithdraw = () => {
       try {
         console.log(formData);
         const response = await axios.post(
-          "http://localhost:8000/api/branchToBranchTransfer/create",
+          "http://localhost:8000/api/MomoMpesawithdraw/withdraw",
           formData,
           {
             headers: {
@@ -64,6 +64,7 @@ const MomoMpessaWithdraw = () => {
         console.error("Error creating user:", error);
       } finally {
         setLoading(false);
+        alert("Withdraw record saved successfully!");
       }
     }
   };

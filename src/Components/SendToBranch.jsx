@@ -49,7 +49,7 @@ const SendToBranch = () => {
   }, [fetchBranches]);
 
   const branchOptions = branches.filter(
-    (branch) => branch._id !== userLogin.branch._id
+    (branch) => branch._id !== userLogin.branch?._id
   );
 
   const handleInputChange = (event) => {

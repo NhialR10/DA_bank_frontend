@@ -24,7 +24,9 @@ const Login = () => {
 
       // Save token to local storage and update user state
       login(response.data);
-      navigate("/");
+      response.data.role === "user"
+        ? navigate("/")
+        : navigate("/local-transfer");
     } catch (err) {
       setError("Invalid email or password");
     } finally {

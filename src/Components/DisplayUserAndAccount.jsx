@@ -54,7 +54,7 @@ const DisplayUserAndAccount = ({
               <th scope="col">Balance</th>
               <th scope="col">Deposit</th>
               <th scope="col">Withdraw</th>
-              <th scope="col">Take Loan</th>
+              <th scope="col">Account Activity</th>
             </tr>
           </thead>
           <tbody>
@@ -90,12 +90,12 @@ const DisplayUserAndAccount = ({
                 <td>
                   <button
                     onClick={() => {
-                      setActiveOperation("borrow");
+                      setActiveOperation("View-activity");
                       handleAcount(account);
                     }}
                     className="btn btn-secondary"
                   >
-                    Borrow
+                    Account Activity
                   </button>
                 </td>
               </tr>

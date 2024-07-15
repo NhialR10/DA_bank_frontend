@@ -79,7 +79,7 @@ function Home() {
 
     getActiveBranch();
   }, [userLogin]); // Trigger fetchUsers() when fetchUsers changes
-  console.log(activeBranch);
+
   return (
     <main1 className="main1-container">
       <div className="main1-title">

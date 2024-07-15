@@ -3,10 +3,11 @@ import CreateCustomer from "./CreateCustomer";
 import SearchCustomer from "./SearchCustomer";
 import CreateAccount from "./CreateAccount";
 import Deposit from "./Deposit";
-import Withdraw from "./Withdraw";
+
 import Borrow from "./Borrow";
 import SendToBranch from "./SendToBranch";
 import RecieveFromBranch from "./RecieveFromBranch";
+import ViewAccountActivity from "./ViewAccountActivity";
 
 const LocalTransfer = () => {
   const [activeOperation, setActiveOperation] = useState(null);
@@ -32,8 +33,13 @@ const LocalTransfer = () => {
         return <CreateAccount />;
       case "deposit":
         return <Deposit accountToOperateOn={accountToOperateOn} />;
-      case "withdrawal":
-        return <Withdraw accountToOperateOn={accountToOperateOn} />;
+      case "View-activity":
+        return (
+          <ViewAccountActivity
+            accountToOperateOn={accountToOperateOn}
+            setAccountToOperateOn={setAccountToOperateOn}
+          />
+        );
       case "borrow":
         return <Borrow accountToOperateOn={accountToOperateOn} />;
       case "recieve":

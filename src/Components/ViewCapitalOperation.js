@@ -1,7 +1,8 @@
 import React from "react";
+import DateTimePickerComponent from "./DateTimePickerComponent";
 
 const ViewCapitalOperation = () => {
-  return <div>View Capital operation</div>;
+  return <DateTimePickerComponent />;
 };
 
 export default ViewCapitalOperation;

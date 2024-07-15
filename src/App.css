@@ -387,6 +387,12 @@ body {
   font-size: 26px;
   color: white;
 }
+
+/* date time picker css */
+.dates {
+  text-align: center;
+  padding-top: 30px;
+}
 /* Medium <= 992px */
 
 @media screen and (max-width: 992px) {

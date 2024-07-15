@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite.css";
 import { AuthContext } from "./AuthContext";
+import { formatNumber } from "../utils";
 const { formatDate } = require("../utils");
 const ViewAccountActivity = ({ accountToOperateOn, setAccountToOperateOn }) => {
   const { userLogin } = useContext(AuthContext);
@@ -72,7 +73,15 @@ const ViewAccountActivity = ({ accountToOperateOn, setAccountToOperateOn }) => {
               {accountActivity.map((accountActivity, index) => (
                 <tr key={index}>
                   <td>{accountActivity.timestamp.slice(0, 10)}</td>
-                  <td>{accountActivity.amount}</td>
+                  <td
+                    style={
+                      accountActivity.type === "deposit"
+                        ? { color: "green" }
+                        : { color: "red" }
+                    }
+                  >
+                    {formatNumber(accountActivity.amount)}
+                  </td>
                   <td>
                     {accountActivity.Userdetails.firstname}{" "}
                     {accountActivity.Userdetails.lastname}

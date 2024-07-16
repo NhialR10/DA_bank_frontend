@@ -8,7 +8,8 @@ import Borrow from "./Borrow";
 import SendToBranch from "./SendToBranch";
 import RecieveFromBranch from "./RecieveFromBranch";
 import ViewAccountActivity from "./ViewAccountActivity";
-
+import ViewBranchReceivings from "./ViewBranchReceivings";
+import ViewBranchSendings from "./ViewBranchSendings";
 const LocalTransfer = () => {
   const [activeOperation, setActiveOperation] = useState(null);
   const [accountToOperateOn, setAccountToOperateOn] = useState(null);
@@ -40,6 +41,10 @@ const LocalTransfer = () => {
             setAccountToOperateOn={setAccountToOperateOn}
           />
         );
+      case "get-branch-receivings":
+        return <ViewBranchReceivings />;
+      case "get-branch-sendings":
+        return <ViewBranchSendings />;
       case "borrow":
         return <Borrow accountToOperateOn={accountToOperateOn} />;
       case "recieve":
@@ -75,9 +80,21 @@ const LocalTransfer = () => {
             </button>
             <button
               className="btn btn-secondary"
+              onClick={() => handleOperation("get-branch-sendings")}
+            >
+              Branch Sendings
+            </button>
+            <button
+              className="btn btn-secondary"
               onClick={() => handleOperation("recieve")}
             >
               Recieve From Branch
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleOperation("get-branch-receivings")}
+            >
+              Branch Receivings
             </button>
             <button
               className="btn btn-secondary"

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -7,7 +7,7 @@ const AuthProvider = ({ children }) => {
   const [userLogin, setUserLogin] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = Cookies.get("user");
     if (storedUser) {
       try {
         setUserLogin(JSON.parse(storedUser)); // Parse JSON string to object
@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
 
   const login = (user) => {
     try {
-      localStorage.setItem("user", JSON.stringify(user)); // Convert object to JSON string
+      Cookies.set("user", JSON.stringify(user), { expires: 3 }); // Convert object to JSON string and set cookie to expire in 3 days
       setUserLogin(user);
     } catch (error) {
       console.error("Error storing user data:", error);
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
+    Cookies.remove("user");
     setUserLogin(null);
   };
 

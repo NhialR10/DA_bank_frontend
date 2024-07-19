@@ -19,10 +19,12 @@ const Login = () => {
     try {
       const response = await axios.post(
         "http://localhost:8000/api/users/login",
-        { email, password }
+        { email, password },
+        { withCredentials: true } // Include credentials in the request
       );
 
-      // Save token to local storage and update user state
+      // Save user details and token in cookies
+
       login(response.data);
       response.data.role === "user"
         ? navigate("/")
@@ -39,7 +41,6 @@ const Login = () => {
       <div className="Login-header">
         <h1>Trust Link Forex Login Form</h1>
       </div>
-
       <div className="login-form">
         <form onSubmit={handleSubmit} autoComplete="off">
           <div>

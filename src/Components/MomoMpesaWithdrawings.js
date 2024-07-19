@@ -6,9 +6,9 @@ import { AuthContext } from "./AuthContext";
 import { formatNumber } from "../utils";
 const { formatDate } = require("../utils");
 
-const MonthlyDollarTransaction = () => {
+const MomoMpesaWithdrawings = () => {
   const { userLogin } = useContext(AuthContext);
-  const [branchDollarExchange, setbranchDollarExchange] = useState(null);
+  const [MpesaMomoWithdrawings, setMpesaMomoWithdrawings] = useState(null);
   const [result, setResult] = useState("NO RECORD FOUND");
   const handleDateChange = async (range) => {
     if (range) {
@@ -18,7 +18,7 @@ const MonthlyDollarTransaction = () => {
       const formattedEndDate = formatDate(endDates);
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/dollarTransaction/get-transactions?start=${formattedStartDate}&end=${formattedEndDate}`,
+          `http://localhost:8000/api/MomoMpesawithdraw/view?start=${formattedStartDate}&end=${formattedEndDate}`,
           {
             headers: {
               Authorization: `Bearer ${userLogin.token}`, // Include token in headers
@@ -27,29 +27,29 @@ const MonthlyDollarTransaction = () => {
         );
 
         if (response?.data?.length) {
-          setbranchDollarExchange(response.data);
+          setMpesaMomoWithdrawings(response.data);
           console.log(response.data);
           setResult("");
         } else {
-          setbranchDollarExchange(null);
+          setMpesaMomoWithdrawings(null);
           setResult("NO RECORD FOUND");
         }
       } catch (error) {
         console.error("Error fetching Account activity:", error);
-        setbranchDollarExchange(null);
+        setMpesaMomoWithdrawings(null);
         setResult("NO RECORD FOUND");
       }
     }
   };
   return (
     <>
-      <h3>Select date range to display branch dollar transactions</h3>
+      <h3>Select date range to display Mpesa and Momo Withdrawings</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}
       />
       <div className="user-display">
-        {branchDollarExchange?.length ? (
+        {MpesaMomoWithdrawings?.length ? (
           <table className="table caption-top user-display">
             <caption
               style={{
@@ -64,26 +64,34 @@ const MonthlyDollarTransaction = () => {
               <tr>
                 <th scope="col">Date</th>
                 <th scope="col">User</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Rate</th>
-                <th scope="col">Amount($)</th>
-                <th scope="col">Type</th>
+                <th scope="col">Withdrawer</th>
+                <th scope="col">Withdrawer's Contact</th>
+                <th scope="col">Withdrawing Phone</th>
+                <th scope="col">Withdrawn Amount</th>
+                <th scope="col">Paid Amount</th>
               </tr>
             </thead>
             <tbody>
-              {branchDollarExchange.map((branchDollarExchange, index) => (
+              {MpesaMomoWithdrawings.map((MpesaMomoWithdrawings, index) => (
                 <tr key={index}>
-                  <td>{branchDollarExchange.timestamp.slice(0, 10)}</td>
+                  <td>{MpesaMomoWithdrawings.timestamp.slice(0, 10)}</td>
                   <td>
-                    {branchDollarExchange.Userdetails.firstname}{" "}
-                    {branchDollarExchange.Userdetails.lastname}
+                    {MpesaMomoWithdrawings.Userdetails.firstname}{" "}
+                    {MpesaMomoWithdrawings.Userdetails.lastname}
                   </td>
-                  <td>{branchDollarExchange.name} </td>
-                  <td>{branchDollarExchange.phone}</td>
-                  <td>{formatNumber(branchDollarExchange.rate)}</td>
-                  <td>{formatNumber(branchDollarExchange.AmountDollars)}</td>
-                  <td>{branchDollarExchange.type}</td>
+                  <td>{MpesaMomoWithdrawings.WithdrawerName}</td>
+                  <td>{MpesaMomoWithdrawings.WithdrawerPhone}</td>
+                  <td>{MpesaMomoWithdrawings.WithdrawingPhone}</td>
+                  <td>
+                    {MpesaMomoWithdrawings.CurrencyToWithdraw}{" "}
+                    {formatNumber(MpesaMomoWithdrawings.WithdrawAmount)}
+                  </td>
+                  <td>
+                    {MpesaMomoWithdrawings.CurrencyToPay === "usd"
+                      ? "$"
+                      : MpesaMomoWithdrawings.CurrencyToPay}{" "}
+                    {formatNumber(MpesaMomoWithdrawings.PayAmount)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -100,4 +108,4 @@ const MonthlyDollarTransaction = () => {
   );
 };
 
-export default MonthlyDollarTransaction;
+export default MomoMpesaWithdrawings;

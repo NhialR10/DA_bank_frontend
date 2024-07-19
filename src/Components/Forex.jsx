@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
-import AddExpenses from "./AddExpenses";
-import ViewExpenses from "./ViewExpenses";
+
 import DollarTransaction from "./DollarTransaction";
 import MonthlyDollarTransaction from "./MonthlyDollarTransaction";
 const Forex = () => {
@@ -39,7 +38,7 @@ const Forex = () => {
               className="btn btn-secondary"
               onClick={() => handleOperation("view")}
             >
-              Monthly Dollar Transaction
+              View Dollar Transaction
             </button>
           </div>
         </div>

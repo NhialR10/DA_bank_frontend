@@ -2,9 +2,24 @@ import React, { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { BsJustify } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
+import axios from "axios";
 
 function Header({ OpenSidebar }) {
   const { logout, userLogin } = useContext(AuthContext);
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:8000/api/users/logout",
+        {},
+        { withCredentials: true }
+      );
+      logout();
+      alert("Logout Successful");
+    } catch (error) {
+      console.error("Error logging out:", error);
+      alert("Logout Failed");
+    }
+  };
   return (
     <header className="header">
       <div className="menu-icon">
@@ -19,7 +34,7 @@ function Header({ OpenSidebar }) {
         </h3>
       </div>
       <div className="header-right">
-        <button onClick={() => logout()} className="btn btn-danger">
+        <button onClick={handleLogout} className="btn btn-danger">
           Logout
         </button>
       </div>

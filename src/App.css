@@ -394,6 +394,14 @@ body {
   padding-top: 30px;
 }
 
+/* reports cards css */
+.cards-container {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+}
 /* Medium <= 992px */
 
 @media screen and (max-width: 992px) {

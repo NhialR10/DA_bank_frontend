@@ -47,6 +47,7 @@ const Withdraw = ({ accountToOperateOn }) => {
       setError("Failed to withdraw. Please try again."); // Set error message
     } finally {
       setLoading(false);
+      alert("Withdrawal successful!");
     }
   };
   return (

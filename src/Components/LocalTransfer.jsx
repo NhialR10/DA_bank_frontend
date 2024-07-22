@@ -10,6 +10,7 @@ import RecieveFromBranch from "./RecieveFromBranch";
 import ViewAccountActivity from "./ViewAccountActivity";
 import ViewBranchReceivings from "./ViewBranchReceivings";
 import ViewBranchSendings from "./ViewBranchSendings";
+import Withdraw from "./Withdraw";
 const LocalTransfer = () => {
   const [activeOperation, setActiveOperation] = useState(null);
   const [accountToOperateOn, setAccountToOperateOn] = useState(null);
@@ -45,8 +46,8 @@ const LocalTransfer = () => {
         return <ViewBranchReceivings />;
       case "get-branch-sendings":
         return <ViewBranchSendings />;
-      case "borrow":
-        return <Borrow accountToOperateOn={accountToOperateOn} />;
+      case "withdraw":
+        return <Withdraw accountToOperateOn={accountToOperateOn} />;
       case "recieve":
         return <RecieveFromBranch />;
       default:

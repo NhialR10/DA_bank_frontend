@@ -79,7 +79,7 @@ const DisplayUserAndAccount = ({
                 <td>
                   <button
                     onClick={() => {
-                      setActiveOperation("withdrawal");
+                      setActiveOperation("withdraw");
                       handleAcount(account);
                     }}
                     className="btn btn-secondary"

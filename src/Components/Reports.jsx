@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "./AuthContext";
-import AddExpenses from "./AddExpenses";
-import ViewExpenses from "./ViewExpenses";
 import { BranchContext } from "./BranchContext";
-import CapitalOperation from "./CapitalOperation";
-import ViewCapitalOperation from "./ViewCapitalOperation";
 import AdminDashboard from "./AdminDashboard";
+import ViewDators from "./ViewDators";
+import ViewCreditors from "./ViewCreditors";
+import CalculateCapital from "./CalculateCapital";
 const Reports = () => {
   const [branches, setBranches] = useState([]);
-  const { fetchBranches } = useContext(BranchContext);
+  const [dollarsAccounts, setDollarsAccounts] = useState([]);
+  const [sspAccounts, setSspAccounts] = useState([]);
+  const [creditors, setCreditors] = useState([]);
+  const [debtors, setDebtors] = useState([]);
+  const { fetchBranches, fetchCreditorsAndDebtors } = useContext(BranchContext);
   const [activeOperation, setActiveOperation] = useState(null);
   const handleOperation = (operation) => {
     setActiveOperation(operation);
@@ -25,16 +26,55 @@ const Reports = () => {
         console.error("Error fetching branches:", error);
       }
     };
-
     getBranches();
   }, [fetchBranches]);
+
+  useEffect(() => {
+    // Fetch accounts when component mounts
+    const getBranches = async () => {
+      try {
+        const fetchedCreditorsAndDebtors = await fetchCreditorsAndDebtors();
+
+        setCreditors(
+          fetchedCreditorsAndDebtors.filter((account) => account.balance > 0)
+        );
+        setDebtors(
+          fetchedCreditorsAndDebtors.filter((account) => account.balance < 0)
+        );
+        setDollarsAccounts(
+          fetchedCreditorsAndDebtors.filter(
+            (account) => account.currency === "usd"
+          )
+        );
+        setSspAccounts(
+          fetchedCreditorsAndDebtors.filter(
+            (account) => account.currency === "ssp"
+          )
+        );
+      } catch (error) {
+        console.error("Error fetching branches:", error);
+      }
+    };
+
+    getBranches();
+  }, [fetchCreditorsAndDebtors]);
 
   const renderOperationComponent = () => {
     switch (activeOperation) {
       case "adminDashBoard":
         return <AdminDashboard branches={branches} />;
-      case "viewCapitalOperation":
-        return <ViewCapitalOperation />;
+      case "calculate-profit":
+        return (
+          <CalculateCapital
+            dollarsAccounts={dollarsAccounts}
+            sspAccounts={sspAccounts}
+            branches={branches}
+          />
+        );
+      case "viewDebtors":
+        return <ViewDators debtors={debtors} />;
+      case "ViewCreditors":
+        return <ViewCreditors creditors={creditors} />;
 
       default:
         return <div>Please select an operation</div>;
@@ -54,9 +94,21 @@ const Reports = () => {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => handleOperation("viewCapitalOperation")}
+              onClick={() => handleOperation("calculate-profit")}
             >
-              View Capital Operation
+              Calculate Profit
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleOperation("ViewCreditors")}
+            >
+              View Creditors
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleOperation("viewDebtors")}
+            >
+              View Debtors
             </button>
           </div>
         </div>

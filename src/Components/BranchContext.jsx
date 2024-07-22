@@ -31,6 +31,19 @@ export const BranchProvider = ({ children }) => {
     }
   };
 
+  const fetchCreditorsAndDebtors = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/accounts/get-accounts"
+      );
+
+      return response.data; // Return array of users
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw error; // Rethrow the error to handle it in the component
+    }
+  };
+
   const deleteBranch = async (branchId) => {
     try {
       const response = await axios.delete(
@@ -74,6 +87,7 @@ export const BranchProvider = ({ children }) => {
         fetchBranches,
         deleteBranch,
         updateBranches,
+        fetchCreditorsAndDebtors,
       }}
     >
       {children}

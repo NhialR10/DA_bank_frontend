@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import axios from "axios";
+
 const Deposit = ({ accountToOperateOn }) => {
   const { userLogin } = useContext(AuthContext); // Access userLogin from context
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ const Deposit = ({ accountToOperateOn }) => {
   const resetForm = () => {
     setTransaction({
       amount: "",
+      type: "deposit", // Ensure type is not lost
     });
   };
 
@@ -30,7 +32,6 @@ const Deposit = ({ accountToOperateOn }) => {
     setError(null); // Reset error state
 
     try {
-      console.log(accountToOperateOn._id);
       const response = await axios.post(
         `http://localhost:8000/api/transactions/create/${accountToOperateOn._id}`,
         transaction,
@@ -48,6 +49,7 @@ const Deposit = ({ accountToOperateOn }) => {
       setLoading(false);
     }
   };
+
   return (
     <div>
       <form className="row g-3" autoComplete="off" onSubmit={handleSubmit}>
@@ -69,7 +71,7 @@ const Deposit = ({ accountToOperateOn }) => {
         </div>
         <div className="col-12">
           <button className="btn btn-primary" type="submit" disabled={loading}>
-            {loading ? "Dpositing..." : "Deposit"}
+            {loading ? "Depositing..." : "Deposit"}
           </button>
         </div>
         {error && (

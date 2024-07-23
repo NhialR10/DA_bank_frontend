@@ -81,9 +81,9 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
       setProfitResults(true);
     }
   };
-  let amountUgxtoDollars = totalBalances.ugxBalance / rates.ugxRate;
-  let amountKshToDollars = totalBalances.kenyaBalance / rates.kshRate;
-  let amountPoundsToDollars = totalBalances.sspBalance / rates.sspRate;
+  let amountUgxtoDollars = totalBalances.ugxBalance / (rates.ugxRate / 100);
+  let amountKshToDollars = totalBalances.kenyaBalance / (rates.kshRate / 100);
+  let amountPoundsToDollars = totalBalances.sspBalance / (rates.sspRate / 100);
 
   let totalMoneyIntheBussinessInDollars =
     amountUgxtoDollars +
@@ -93,10 +93,10 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
   let totalBussinessMoneyIntheBussinessInDollars =
     totalMoneyIntheBussinessInDollars -
     dollarsBalance.dollarsBalance -
-    poundsBallance.poundsBalance / rates.sspRate;
+    poundsBallance.poundsBalance / (rates.sspRate / 100);
 
   let totalCapitalInDollars =
-    capital?.AmountInDollars + capital?.AmountInSsp / rates.sspRate;
+    capital?.AmountInDollars + capital?.AmountInSsp / (rates.sspRate / 100);
   let profit =
     totalBussinessMoneyIntheBussinessInDollars - totalCapitalInDollars;
 

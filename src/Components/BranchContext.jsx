@@ -23,7 +23,6 @@ export const BranchProvider = ({ children }) => {
   const fetchBranches = async () => {
     try {
       const response = await axios.get("http://localhost:8000/api/branches");
-
       return response.data; // Return array of users
     } catch (error) {
       console.error("Error fetching users:", error);

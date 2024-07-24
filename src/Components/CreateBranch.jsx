@@ -30,7 +30,6 @@ const CreateBranchForm = () => {
         }
       );
 
-      console.log("Branch created:", response.data);
       addBranch(response.data); // Add newly created branch to context
       // Handle success (e.g., update state, show success message)
       retserFields();

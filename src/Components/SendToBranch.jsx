@@ -79,7 +79,7 @@ const SendToBranch = () => {
         );
 
         ResetFormField();
-        console.log(response.data);
+
         setCustomerCode(response.data.code);
       } catch (error) {
         console.error("Error creating user:", error);

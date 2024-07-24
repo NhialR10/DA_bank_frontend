@@ -28,7 +28,7 @@ const MonthlyDollarTransaction = () => {
 
         if (response?.data?.length) {
           setbranchDollarExchange(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setbranchDollarExchange(null);

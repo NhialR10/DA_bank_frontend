@@ -47,7 +47,6 @@ const MomoMpessaWithdraw = () => {
       setIsValid(true);
       setLoading(true);
       try {
-        console.log(formData);
         const response = await axios.post(
           "http://localhost:8000/api/MomoMpesawithdraw/withdraw",
           formData,
@@ -59,7 +58,6 @@ const MomoMpessaWithdraw = () => {
         );
 
         ResetFormField();
-        console.log(response.data);
       } catch (error) {
         console.error("Error creating user:", error);
       } finally {

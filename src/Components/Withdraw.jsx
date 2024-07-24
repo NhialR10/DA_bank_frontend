@@ -13,6 +13,7 @@ const Withdraw = ({ accountToOperateOn }) => {
   const resetForm = () => {
     setTransaction({
       amount: "",
+      type: "withdrawal",
     });
   };
 
@@ -40,7 +41,6 @@ const Withdraw = ({ accountToOperateOn }) => {
         }
       );
 
-      console.log("Account created:", response.data);
       resetForm();
     } catch (error) {
       console.error("Error creating account:", error);

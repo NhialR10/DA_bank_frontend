@@ -28,7 +28,7 @@ const MomoMpesaWithdrawings = () => {
 
         if (response?.data?.length) {
           setMpesaMomoWithdrawings(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setMpesaMomoWithdrawings(null);

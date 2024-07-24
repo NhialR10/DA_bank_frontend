@@ -99,7 +99,6 @@ const DisplayUnpaidReciversOfAbranch = () => {
         searchResult && (
           <div className="mt-3">
             <h5>{searchResult}</h5>
-            {console.log(unpaidReceiver)}
           </div>
         )
       )}

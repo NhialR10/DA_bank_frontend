@@ -36,13 +36,12 @@ function Sidebar({ openSidebarToggle, setOpenSidebarToggle }) {
       </div>
 
       <ul className="sidebar-list">
-        {userLogin.role === "user" ? (
-          <li className="sidebar-list-item">
-            <Link to="/" onClick={() => handleLinkClick("/")}>
-              <BsGrid1X2Fill className="icon" /> Dashboard
-            </Link>
-          </li>
-        ) : null}
+        <li className="sidebar-list-item">
+          <Link to="/" onClick={() => handleLinkClick("/")}>
+            <BsGrid1X2Fill className="icon" /> Dashboard
+          </Link>
+        </li>
+
         <li className="sidebar-list-item">
           <Link to="/local-transfer" onClick={() => handleLinkClick("/")}>
             <FaExchangeAlt className="icon" /> Local Banking
@@ -66,31 +65,27 @@ function Sidebar({ openSidebarToggle, setOpenSidebarToggle }) {
             <FaMoneyBillWave className="icon" /> Expenses Management
           </Link>
         </li>
-        {userLogin.role === "admin" ? (
-          <li className="sidebar-list-item">
-            <Link
-              to="/capital_operations"
-              onClick={() => handleLinkClick("/capital_operations")}
-            >
-              <FaMoneyBillWave className="icon" /> Capital Management
-            </Link>
-          </li>
-        ) : null}
 
-        {userLogin.role === "admin" ? (
-          <li className="sidebar-list-item">
-            <Link to="/reports" onClick={() => handleLinkClick("/reports")}>
-              <BsMenuButtonWideFill className="icon" /> Reports
-            </Link>
-          </li>
-        ) : null}
-        {userLogin.role === "admin" ? (
-          <li className="sidebar-list-item">
-            <Link to="/settings" onClick={() => handleLinkClick("/settings")}>
-              <BsFillGearFill className="icon" /> Settings
-            </Link>
-          </li>
-        ) : null}
+        <li className="sidebar-list-item">
+          <Link
+            to="/capital_operations"
+            onClick={() => handleLinkClick("/capital_operations")}
+          >
+            <FaMoneyBillWave className="icon" /> Capital Management
+          </Link>
+        </li>
+
+        <li className="sidebar-list-item">
+          <Link to="/reports" onClick={() => handleLinkClick("/reports")}>
+            <BsMenuButtonWideFill className="icon" /> Reports
+          </Link>
+        </li>
+
+        <li className="sidebar-list-item">
+          <Link to="/settings" onClick={() => handleLinkClick("/settings")}>
+            <BsFillGearFill className="icon" /> Settings
+          </Link>
+        </li>
       </ul>
     </aside>
   );

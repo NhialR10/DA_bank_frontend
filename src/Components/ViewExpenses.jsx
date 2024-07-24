@@ -27,7 +27,7 @@ const ViewExpenses = () => {
 
         if (response?.data?.length) {
           setexpenses(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setexpenses(null);

@@ -30,7 +30,7 @@ const CreateCustomer = () => {
 
     try {
       await createCustomer(formData);
-      console.log("Customer created successfully!");
+
       setFormData({
         firstname: "",
         lastname: "",

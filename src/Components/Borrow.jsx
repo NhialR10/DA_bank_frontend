@@ -39,8 +39,7 @@ const Borrow = ({ accountToOperateOn }) => {
           },
         }
       );
-      console.log(accountToOperateOn._id);
-      console.log("Account created:", response.data);
+
       resetForm();
     } catch (error) {
       console.error("Error creating account:", error);

@@ -39,7 +39,7 @@ export const CustomerProvider = ({ children }) => {
       const response = await axios.delete(
         `http://localhost:8000/api/Customeres/delete/${CustomerId}`
       );
-      console.log("Customer deleted:", response.data);
+
       return response.data; // Return success message or confirmation
     } catch (error) {
       console.error(`Error deleting user with ID ${CustomerId}:`, error);
@@ -60,8 +60,7 @@ export const CustomerProvider = ({ children }) => {
       setCustomerCode(code);
       const newCustomer = response.data;
       setShowCustomerCode(true);
-      // Return created user data or ID if needed
-      console.log(code);
+
       return newCustomer;
     } catch (error) {
       console.error("Error creating user:", error);
@@ -76,7 +75,7 @@ export const CustomerProvider = ({ children }) => {
         `http://localhost:8000/api/Customeres/update/${CustomerId}`,
         CustomerData
       );
-      console.log("User updated:", response.data);
+
       return response.data; // Return updated user data or ID if needed
     } catch (error) {
       console.error(`Error updating user with ID ${CustomerId}:`, error);

@@ -48,7 +48,7 @@ export const BranchProvider = ({ children }) => {
       const response = await axios.delete(
         `http://localhost:8000/api/branches/delete/${branchId}`
       );
-      console.log("Branch deleted:", response.data);
+
       return response.data; // Return success message or confirmation
     } catch (error) {
       console.error(`Error deleting user with ID ${branchId}:`, error);
@@ -63,7 +63,7 @@ export const BranchProvider = ({ children }) => {
         `http://localhost:8000/api/branches/update/${branchId}`,
         branchData
       );
-      console.log("User updated:", response.data);
+
       return response.data; // Return updated user data or ID if needed
     } catch (error) {
       console.error(`Error updating user with ID ${branchId}:`, error);

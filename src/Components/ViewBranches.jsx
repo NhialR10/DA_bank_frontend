@@ -45,7 +45,6 @@ const ViewBranches = ({
       setBranches((prevBranches) =>
         prevBranches.filter((branch) => branch._id !== branchId)
       );
-      console.log("Branch deleted successfully!");
     } catch (error) {
       console.error(`Error deleting user with ID ${branchId}:`, error);
     }
@@ -116,7 +115,6 @@ const ViewBranches = ({
           ))}
         </tbody>
       </table>
-      {console.log(branches)}
     </div>
   );
 };

@@ -27,7 +27,7 @@ const ViewAccountActivity = ({ accountToOperateOn, setAccountToOperateOn }) => {
 
         if (response?.data?.length) {
           setAccountActivity(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setAccountActivity(null);

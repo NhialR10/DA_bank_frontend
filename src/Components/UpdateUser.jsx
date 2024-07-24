@@ -2,10 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "./UserContext";
 
 const UpdateUser = ({ user, onCancel }) => {
-  console.log("User prop received in UpdateUser:", user); // Log the user prop
   const { updateUser } = useContext(UserContext);
   const [updatedUser, setUpdatedUser] = useState({
-    name: "",
+    firstname: "",
     lastname: "",
     email: "",
     password: "",
@@ -16,7 +15,7 @@ const UpdateUser = ({ user, onCancel }) => {
   useEffect(() => {
     if (user) {
       setUpdatedUser({
-        name: user.name || "",
+        firstname: user.firstname || "",
         lastname: user.lastname || "",
         email: user.email || "",
         password: "",
@@ -56,8 +55,8 @@ const UpdateUser = ({ user, onCancel }) => {
             className="form-control custom-input"
             id="validationServer01"
             placeholder="First Name"
-            name="name"
-            value={updatedUser.name}
+            name="firstname"
+            value={updatedUser.firstname}
             onChange={handleChange}
             autoComplete="off"
             required

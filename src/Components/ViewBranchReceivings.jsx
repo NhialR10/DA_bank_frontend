@@ -27,7 +27,7 @@ const ViewBranchReceivings = () => {
 
         if (response?.data?.length) {
           setBranchReceivings(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setBranchReceivings(null);

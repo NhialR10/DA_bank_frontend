@@ -21,7 +21,6 @@ const CreateUser = ({ editBranch }) => {
     try {
       await createUser(user); // Call createUser function from context
       resetUser(); // Clear form fields after successful creation
-      console.log("User created successfully!");
     } catch (error) {
       console.error("Error creating user:", error);
       // Handle error (e.g., display error message)

@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 
 const CapitalOperation = ({ branches }) => {
   const [loading, setLoading] = useState(false);
-  console.log(branches);
+
   const { userLogin } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({

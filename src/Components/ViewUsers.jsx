@@ -25,7 +25,6 @@ const ViewUsers = ({ setEditingUser }) => {
     try {
       await deleteUser(userId);
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
-      console.log("User deleted successfully!");
     } catch (error) {
       console.error(`Error deleting user with ID ${userId}:`, error);
     }

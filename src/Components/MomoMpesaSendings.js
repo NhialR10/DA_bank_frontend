@@ -27,7 +27,7 @@ const MomoMpesaSendings = () => {
 
         if (response?.data?.length) {
           setMpesaMomoSendings(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setMpesaMomoSendings(null);

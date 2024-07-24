@@ -3,11 +3,9 @@ import React, { useContext, useState } from "react";
 import CreateUser from "./CreateUser";
 import ViewUsers from "./ViewUsers";
 import UpdateUser from "./UpdateUser";
-import DeleteUser from "./DeleteUser";
 import CreateBranch from "./CreateBranch";
 import ViewBranches from "./ViewBranches";
 import UpdateBranch from "./UpdateBranch";
-import DeleteBranch from "./DeleteBranch";
 import { UserContext } from "./UserContext";
 
 // Import other operation components similarly
@@ -136,8 +134,7 @@ const Settings = ({
             updatedbranch={updatedbranch}
           />
         );
-      case "delete":
-        return activeSection === "user" ? <DeleteUser /> : <DeleteBranch />;
+
       default:
         return <div>Please select an operation</div>;
     }

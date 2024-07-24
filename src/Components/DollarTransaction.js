@@ -47,7 +47,6 @@ const DollarTransaction = () => {
   };
 
   const handleSubmit = async (event) => {
-    console.log(formData);
     event.preventDefault();
     if (formData.type === "") {
       setIsValid(false);

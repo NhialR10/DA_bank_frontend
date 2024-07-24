@@ -27,7 +27,7 @@ const ViewCapitalOperation = () => {
 
         if (response?.data?.length) {
           setcapitalOperation(response.data);
-          console.log(response.data);
+
           setResult("");
         } else {
           setcapitalOperation(null);

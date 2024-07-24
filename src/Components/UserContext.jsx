@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
         "http://localhost:8000/api/users/create",
         userData
       );
-      console.log("User created:", response.data);
+
       resetUser(); // Clear form fields after successful creation
       return response.data; // Return created user data or ID if needed
     } catch (error) {

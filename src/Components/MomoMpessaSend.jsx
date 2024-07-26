@@ -273,7 +273,7 @@ const MomoMpessaSend = () => {
           />
           <div className="invalid-feedback">This field is required.</div>
         </div>
-        <div className="col-12">
+        <div className="col-12 button">
           <button className="btn btn-primary" type="submit" disabled={loading}>
             {loading ? "Sending..." : "Send"}
           </button>

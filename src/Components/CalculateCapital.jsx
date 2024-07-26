@@ -170,7 +170,7 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
       {profitResults ? (
         <div
           class="card text-bg-secondary profit-card"
-          style={{ width: "23rem", marginTop: "40px" }}
+          style={{ width: "100%", marginTop: "40px" }}
         >
           <div class="card-header">PROFIT CALCULATION RESULTS</div>
           <ul class="list-group list-group-flush">

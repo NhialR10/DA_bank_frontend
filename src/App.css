@@ -193,17 +193,6 @@ body {
   justify-content: space-between;
 }
 
-.card1-inner h3 {
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  unicode-bidi: isolate;
-}
-
 .card1-inner > .card1_icon {
   font-size: 25px;
 }
@@ -455,8 +444,10 @@ body {
   .sendTobranch h3 {
     margin-top: 5px;
     font-size: 18px;
-    margin-bottom: 5px;
-    margin-block-end: 0.2em;
+    margin-bottom: 2px;
+  }
+  .col-md-4 {
+    margin-top: 6px;
   }
   .user-display .btn {
     font-size: 10px; /* Smaller button text for smaller screens */

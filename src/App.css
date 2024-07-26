@@ -455,6 +455,7 @@ body {
   .sendTobranch h3 {
     margin-top: 5px;
     font-size: 18px;
+    margin-bottom: 5px;
   }
   .user-display .btn {
     font-size: 10px; /* Smaller button text for smaller screens */

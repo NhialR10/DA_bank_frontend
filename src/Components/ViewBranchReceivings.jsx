@@ -17,7 +17,7 @@ const ViewBranchReceivings = () => {
       const formattedEndDate = formatDate(endDates);
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/branchToBranchTransfer/paid-receivers?start=${formattedStartDate}&end=${formattedEndDate}`,
+          `https://trustlinks-api.onrender.com/api/branchToBranchTransfer/paid-receivers?start=${formattedStartDate}&end=${formattedEndDate}`,
           {
             headers: {
               Authorization: `Bearer ${userLogin.token}`, // Include token in headers

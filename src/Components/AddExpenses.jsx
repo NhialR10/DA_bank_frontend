@@ -39,7 +39,7 @@ const AddExpenses = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/expenses/add",
+          "https://trustlinks-api.onrender.com/api/expenses/add",
           formData,
           {
             headers: {

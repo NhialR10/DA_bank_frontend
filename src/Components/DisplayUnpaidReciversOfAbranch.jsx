@@ -11,7 +11,7 @@ const DisplayUnpaidReciversOfAbranch = () => {
   const handleSearch = async (searchTerm) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/branchToBranchTransfer/unpaid-receiver/${searchTerm}`,
+        `https://trustlinks-api.onrender.com/api/branchToBranchTransfer/unpaid-receiver/${searchTerm}`,
         {
           headers: {
             Authorization: `Bearer ${userLogin.token}`, // Include token in headers
@@ -34,7 +34,7 @@ const DisplayUnpaidReciversOfAbranch = () => {
   const handlePay = async (id) => {
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/branchToBranchTransfer/receive/${id}`,
+        `https://trustlinks-api.onrender.com/api/branchToBranchTransfer/receive/${id}`,
         unpaidReceiver,
         {
           headers: {

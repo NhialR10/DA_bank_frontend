@@ -54,7 +54,7 @@ const MomoMpessaSend = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/MomoMpesa/send",
+          "https://trustlinks-api.onrender.com/api/MomoMpesa/send",
           formData,
           {
             headers: {

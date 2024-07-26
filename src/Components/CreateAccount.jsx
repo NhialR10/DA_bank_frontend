@@ -33,7 +33,7 @@ const CreateAccount = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/accounts/create",
+        "https://trustlinks-api.onrender.com/api/accounts/create",
         account,
         {
           headers: {

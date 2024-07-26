@@ -1,8 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "./AuthContext";
-import AddExpenses from "./AddExpenses";
-import ViewExpenses from "./ViewExpenses";
 
 import { BranchContext } from "./BranchContext";
 import CapitalOperation from "./CapitalOperation";

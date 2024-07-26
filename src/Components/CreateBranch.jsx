@@ -22,7 +22,7 @@ const CreateBranchForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/branches/create",
+        "https://trustlinks-api.onrender.com/api/branches/create",
         {
           location,
           name,

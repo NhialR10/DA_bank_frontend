@@ -9,7 +9,7 @@ function Header({ OpenSidebar }) {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/api/users/logout",
+        "https://trustlinks-api.onrender.com/api/users/logout",
         {},
         { withCredentials: true }
       );

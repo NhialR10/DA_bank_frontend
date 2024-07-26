@@ -43,7 +43,7 @@ const CapitalOperation = ({ branches }) => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/capitalOperation",
+          "https://trustlinks-api.onrender.com/api/capitalOperation",
           formData,
           {
             headers: {

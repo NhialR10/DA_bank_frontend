@@ -11,7 +11,7 @@ const DisplayUserAndAccount = ({
   const handleSearch = async (searchTerm) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/customers/get-A-Customer/${searchTerm}`
+        `https://trustlinks-api.onrender.com/api/customers/get-A-Customer/${searchTerm}`
       );
       if (response.data) {
         setCustomer(response.data);

@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "./AuthContext";
+import React, { useState } from "react";
 
 import DollarTransaction from "./DollarTransaction";
 import MonthlyDollarTransaction from "./MonthlyDollarTransaction";

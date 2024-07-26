@@ -72,7 +72,7 @@ export const CustomerProvider = ({ children }) => {
   const updateCustomeres = async (CustomerId, CustomerData) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/Customeres/update/${CustomerId}`,
+        `https://trustlinks-api.onrender.com/api/Customeres/update/${CustomerId}`,
         CustomerData
       );
 

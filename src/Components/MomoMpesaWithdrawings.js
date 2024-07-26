@@ -18,7 +18,7 @@ const MomoMpesaWithdrawings = () => {
       const formattedEndDate = formatDate(endDates);
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/MomoMpesawithdraw/view?start=${formattedStartDate}&end=${formattedEndDate}`,
+          `https://trustlinks-api.onrender.com/api/MomoMpesawithdraw/view?start=${formattedStartDate}&end=${formattedEndDate}`,
           {
             headers: {
               Authorization: `Bearer ${userLogin.token}`, // Include token in headers

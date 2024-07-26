@@ -17,7 +17,7 @@ const ViewCapitalOperation = () => {
       const formattedEndDate = formatDate(endDates);
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/capitalOperation/view-operations?start=${formattedStartDate}&end=${formattedEndDate}`,
+          `https://trustlinks-api.onrender.com/api/capitalOperation/view-operations?start=${formattedStartDate}&end=${formattedEndDate}`,
           {
             headers: {
               Authorization: `Bearer ${userLogin.token}`, // Include token in headers

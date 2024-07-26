@@ -69,7 +69,7 @@ function Home() {
     const getActiveBranch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/branches/get-branch/${userLogin.branch._id}`
+          `https://trustlinks-api.onrender.com/api/branches/get-branch/${userLogin.branch._id}`
         );
         setActiveBranch(response.data);
       } catch (error) {

@@ -22,7 +22,9 @@ export const BranchProvider = ({ children }) => {
   // Function to fetch all users
   const fetchBranches = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/branches");
+      const response = await axios.get(
+        "https://trustlinks-api.onrender.com/api/branches"
+      );
       return response.data; // Return array of users
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -33,7 +35,7 @@ export const BranchProvider = ({ children }) => {
   const fetchCreditorsAndDebtors = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/accounts/get-accounts"
+        "https://trustlinks-api.onrender.com/api/accounts/get-accounts"
       );
 
       return response.data; // Return array of users
@@ -46,7 +48,7 @@ export const BranchProvider = ({ children }) => {
   const deleteBranch = async (branchId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/api/branches/delete/${branchId}`
+        `https://trustlinks-api.onrender.com/api/branches/delete/${branchId}`
       );
 
       return response.data; // Return success message or confirmation
@@ -60,7 +62,7 @@ export const BranchProvider = ({ children }) => {
   const updateBranches = async (branchId, branchData) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/branches/update/${branchId}`,
+        `https://trustlinks-api.onrender.com/branches/update/${branchId}`,
         branchData
       );
 

@@ -3,8 +3,6 @@ import CreateCustomer from "./CreateCustomer";
 import SearchCustomer from "./SearchCustomer";
 import CreateAccount from "./CreateAccount";
 import Deposit from "./Deposit";
-
-import Borrow from "./Borrow";
 import SendToBranch from "./SendToBranch";
 import RecieveFromBranch from "./RecieveFromBranch";
 import ViewAccountActivity from "./ViewAccountActivity";

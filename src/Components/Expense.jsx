@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "./AuthContext";
+import React, { useState } from "react";
+
 import AddExpenses from "./AddExpenses";
 import ViewExpenses from "./ViewExpenses";
 const Expenses = () => {

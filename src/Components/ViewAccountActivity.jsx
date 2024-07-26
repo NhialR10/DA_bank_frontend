@@ -17,7 +17,7 @@ const ViewAccountActivity = ({ accountToOperateOn, setAccountToOperateOn }) => {
       const formattedEndDate = formatDate(endDates);
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/transactions/${accountToOperateOn._id}?end=${formattedEndDate}&start=${formattedStartDate}`,
+          `https://trustlinks-api.onrender.com/api/transactions/${accountToOperateOn._id}?end=${formattedEndDate}&start=${formattedStartDate}`,
           {
             headers: {
               Authorization: `Bearer ${userLogin.token}`, // Include token in headers

@@ -71,7 +71,7 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/capitalOperation/capital"
+        "https://trustlinks-api.onrender.com/api/capitalOperation/capital"
       );
       setCapital(response.data);
     } catch (error) {

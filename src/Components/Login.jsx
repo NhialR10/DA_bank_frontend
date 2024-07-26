@@ -18,7 +18,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users/login",
+        "https://trustlinks-api.onrender.com/api/users/login",
         { email, password },
         { withCredentials: true } // Include credentials in the request
       );

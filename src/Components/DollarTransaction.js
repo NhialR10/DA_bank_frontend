@@ -55,7 +55,7 @@ const DollarTransaction = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/dollarTransaction",
+          "https://trustlinks-api.onrender.com/api/dollarTransaction",
           formData,
           {
             headers: {

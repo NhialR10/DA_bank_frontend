@@ -69,7 +69,7 @@ const SendToBranch = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/branchToBranchTransfer/create",
+          "https://trustlinks-api.onrender.com/api/branchToBranchTransfer/create",
           formData,
           {
             headers: {

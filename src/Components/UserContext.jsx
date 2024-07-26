@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
   const createUser = async (userData) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users/create",
+        "https://trustlinks-api.onrender.com/api/users/create",
         userData
       );
 
@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
   const updateUser = async (userId, userData) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/users/update/${userId}`,
+        `https://trustlinks-api.onrender.com/api/users/update/${userId}`,
         userData
       );
       console.log("User updated:", response.data);
@@ -64,7 +64,9 @@ export const UserProvider = ({ children }) => {
   // Function to fetch all users
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/users");
+      const response = await axios.get(
+        "https://trustlinks-api.onrender.com/api/users"
+      );
 
       return response.data; // Return array of users
     } catch (error) {
@@ -77,7 +79,7 @@ export const UserProvider = ({ children }) => {
   const deleteUser = async (userId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/api/users/delete/${userId}`
+        `https://trustlinks-api.onrender.com/api/users/delete/${userId}`
       );
       console.log("User deleted:", response.data);
       return response.data; // Return success message or confirmation

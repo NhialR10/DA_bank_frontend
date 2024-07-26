@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
-import formatNumber from "../utils";
+
 const MomoMpessaWithdraw = () => {
   const [loading, setLoading] = useState(false);
 
@@ -48,7 +48,7 @@ const MomoMpessaWithdraw = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/MomoMpesawithdraw/withdraw",
+          "https://trustlinks-api.onrender.com/api/MomoMpesawithdraw/withdraw",
           formData,
           {
             headers: {

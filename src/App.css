@@ -451,13 +451,17 @@ body {
   }
   .main1-container button {
     font-size: 10px;
-    color: red;
   }
   .sendTobranch h3 {
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 18px;
   }
   .user-display .btn {
     font-size: 10px; /* Smaller button text for smaller screens */
+  }
+  .cards-container {
+    gap: 10px;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
   }
 }

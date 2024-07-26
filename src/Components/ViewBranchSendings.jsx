@@ -43,7 +43,7 @@ const ViewBranchSendings = () => {
   };
   return (
     <>
-      <h3>Select date range to display branch Sendings</h3>
+      <h3>Select date range</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}
@@ -81,9 +81,7 @@ const ViewBranchSendings = () => {
                   </td>
                   <td>{branchSendings.phone}</td>
                   <td>{branchSendings.Rfirstname}</td>
-
                   <td>{branchSendings.ReceivingBranchDetails.name}</td>
-
                   <td>{formatNumber(branchSendings.amount)}</td>
                   <td>{branchSendings.isReceived ? "Paid" : "Pending"}</td>
                 </tr>

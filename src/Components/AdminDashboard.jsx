@@ -108,7 +108,7 @@ const AdminDashboard = ({ branches }) => {
 
       <div className="cards-container">
         {branches.map((branch) => (
-          <div class="card text-bg-secondary" style={{ width: "23rem" }}>
+          <div class="card text-bg-secondary" style={{ width: "100%" }}>
             <div class="card-header">{branch.name}</div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">

@@ -460,6 +460,8 @@ body {
     font-size: 10px; /* Smaller button text for smaller screens */
   }
   .cards-container {
+    width: 100%;
+    display: grid;
     gap: 10px;
     grid-template-columns: 1fr;
     margin-top: 20px;

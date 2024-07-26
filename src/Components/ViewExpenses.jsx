@@ -42,7 +42,7 @@ const ViewExpenses = () => {
   };
   return (
     <>
-      <h3>Select date range to display expenses</h3>
+      <h3>Select date range</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}

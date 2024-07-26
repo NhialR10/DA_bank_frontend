@@ -43,7 +43,7 @@ const ViewCapitalOperation = () => {
 
   return (
     <>
-      <h3>Please select date range to display account activity</h3>
+      <h3>Select date range</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}

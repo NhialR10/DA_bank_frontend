@@ -449,6 +449,14 @@ body {
   .user-display table {
     font-size: 12px; /* Smaller font size for smaller screens */
   }
+  .main1-container button {
+    font-size: 10px;
+    color: red;
+  }
+  .sendTobranch h3 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
   .user-display .btn {
     font-size: 10px; /* Smaller button text for smaller screens */
   }

@@ -43,7 +43,7 @@ const MomoMpesaWithdrawings = () => {
   };
   return (
     <>
-      <h3>Select date range to display Mpesa and Momo Withdrawings</h3>
+      <h3>Select date range</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}

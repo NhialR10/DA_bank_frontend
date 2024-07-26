@@ -42,7 +42,7 @@ const ViewBranchReceivings = () => {
   };
   return (
     <>
-      <h3>Select date range to display branch receivings</h3>
+      <h3>Select date range</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}

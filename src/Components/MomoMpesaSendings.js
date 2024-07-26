@@ -42,7 +42,7 @@ const MomoMpesaSendings = () => {
   };
   return (
     <>
-      <h3>Select date range to display Mpesa and Momo Sendings</h3>
+      <h3>Select date range</h3>
       <DateRangePicker
         placeholder="Select Date Range"
         onChange={handleDateChange}

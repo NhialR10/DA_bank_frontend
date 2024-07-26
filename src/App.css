@@ -466,4 +466,7 @@ body {
     grid-template-columns: 1fr;
     margin-top: 20px;
   }
+  .profit-card {
+    width: 100%;
+  }
 }

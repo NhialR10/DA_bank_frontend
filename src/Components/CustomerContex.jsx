@@ -24,7 +24,7 @@ export const CustomerProvider = ({ children }) => {
   const fetchCustomeres = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/customers/create"
+        "https://trustlinks-api.onrender.com/api/customers/create"
       );
 
       return response.data; // Return array of users
@@ -37,7 +37,7 @@ export const CustomerProvider = ({ children }) => {
   const deleteCustomer = async (CustomerId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/api/Customeres/delete/${CustomerId}`
+        `https://trustlinks-api.onrender.com/api/Customeres/delete/${CustomerId}`
       );
 
       return response.data; // Return success message or confirmation
@@ -50,7 +50,7 @@ export const CustomerProvider = ({ children }) => {
   const createCustomer = async (userData) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/customers/create",
+        "https://trustlinks-api.onrender.com/api/customers/create",
         userData
       );
 

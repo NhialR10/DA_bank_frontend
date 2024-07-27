@@ -81,7 +81,7 @@ export const UserProvider = ({ children }) => {
       const response = await axios.delete(
         `https://trustlinks-api.onrender.com/api/users/delete/${userId}`
       );
-      console.log("User deleted:", response.data);
+
       return response.data; // Return success message or confirmation
     } catch (error) {
       console.error(`Error deleting user with ID ${userId}:`, error);

@@ -495,11 +495,7 @@ body {
     border-radius: 4px; /* Optional: add rounded corners */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for a card-like effect */
   }
-
   .login-form form {
     margin: 50px auto;
-  }
-  .main1-container {
-    padding-bottom: 150px;
   }
 }

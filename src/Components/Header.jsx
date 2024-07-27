@@ -8,11 +8,12 @@ function Header({ OpenSidebar }) {
   const { logout, userLogin } = useContext(AuthContext);
   const handleLogout = async () => {
     try {
-      await axios.post(
+      const response = await axios.post(
         "https://trustlinks-api.onrender.com/api/users/logout",
         {},
         { withCredentials: true }
       );
+      console.log(response);
       logout();
       alert("Logout Successful");
     } catch (error) {

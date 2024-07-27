@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   const login = (user) => {
     try {
       setUserLogin(user);
+      Cookies.set("user", user);
     } catch (error) {
       console.error("Error storing user data:", error);
     }

@@ -19,7 +19,6 @@ const AuthProvider = ({ children }) => {
 
   const login = (user) => {
     try {
-      Cookies.set("user", JSON.stringify(user), { expires: 3 }); // Convert object to JSON string and set cookie to expire in 3 days
       setUserLogin(user);
     } catch (error) {
       console.error("Error storing user data:", error);

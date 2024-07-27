@@ -462,6 +462,7 @@ body {
     gap: 10px;
     grid-template-columns: 1fr;
     margin-top: 20px;
+    margin-bottom: 100px;
   }
   .profit-card {
     width: 100%;

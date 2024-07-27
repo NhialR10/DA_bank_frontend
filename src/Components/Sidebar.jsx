@@ -17,6 +17,7 @@ function Sidebar({ openSidebarToggle, setOpenSidebarToggle }) {
       setOpenSidebarToggle(false); // Close sidebar only if clicking a different link
     } else {
       setSelectedLink(path); // Update selected link state
+      setOpenSidebarToggle(false);
     }
   };
 

@@ -15,6 +15,7 @@ import {
   LineChart,
   Line,
 } from "recharts";
+import Loading from "./Loading";
 const { formatNumber } = require("../utils");
 function Home() {
   const { userLogin } = useContext(AuthContext);
@@ -84,7 +85,7 @@ function Home() {
   }, [userLogin]); // Trigger fetchUsers() when fetchUsers changes
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

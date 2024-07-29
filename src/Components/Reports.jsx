@@ -10,7 +10,9 @@ const Reports = () => {
   const [sspAccounts, setSspAccounts] = useState([]);
   const [creditors, setCreditors] = useState([]);
   const [debtors, setDebtors] = useState([]);
-  const { fetchBranches, fetchCreditorsAndDebtors } = useContext(BranchContext);
+  const [unpaiBankReceiver, setUpaidBankReceivers] = useState([]);
+  const { fetchBranches, fetchCreditorsAndDebtors, fetchUnpaidBankReceivers } =
+    useContext(BranchContext);
   const [activeOperation, setActiveOperation] = useState(null);
   const handleOperation = (operation) => {
     setActiveOperation(operation);
@@ -28,6 +30,19 @@ const Reports = () => {
     };
     getBranches();
   }, [fetchBranches]);
+
+  useEffect(() => {
+    // Fetch Branches when component mounts
+    const getUnpaidBankReceivers = async () => {
+      try {
+        const unpaidBReceivers = await fetchUnpaidBankReceivers();
+        setUpaidBankReceivers(unpaidBReceivers);
+      } catch (error) {
+        console.error("Unpaid Bank Receivers:", error);
+      }
+    };
+    getUnpaidBankReceivers();
+  }, [fetchUnpaidBankReceivers]);
 
   useEffect(() => {
     // Fetch accounts when component mounts
@@ -69,6 +84,7 @@ const Reports = () => {
             dollarsAccounts={dollarsAccounts}
             sspAccounts={sspAccounts}
             branches={branches}
+            unpaiBankReceiver={unpaiBankReceiver}
           />
         );
       case "viewDebtors":

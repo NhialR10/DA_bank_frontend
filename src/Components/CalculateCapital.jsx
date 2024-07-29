@@ -2,8 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { formatNumber } from "../utils";
 
-const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
+const CalculateCapital = ({
+  dollarsAccounts,
+  sspAccounts,
+  branches,
+  unpaiBankReceiver,
+}) => {
   const [dollarsBalance, setDollarsBallance] = useState({ dollarsBalance: 0 });
+  const [unpaidBReceiversAmount, setUnpaidBReceiversAmount] = useState({
+    unpaidBReceiversAmount: 0,
+  });
   const [poundsBallance, setPoundsBallance] = useState({ poundsBalance: 0 });
   const [capital, setCapital] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -59,6 +67,18 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
     setPoundsBallance(totals);
   }, [sspAccounts]);
 
+  useEffect(() => {
+    const totals = unpaiBankReceiver.reduce(
+      (totals, unpaiBankReceiver) => {
+        totals.unpaidBReceiversAmount += unpaiBankReceiver.amount;
+        return totals;
+      },
+      { unpaidBReceiversAmount: 0 }
+    );
+
+    setUnpaidBReceiversAmount(totals);
+  }, [unpaiBankReceiver]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRates((prevData) => ({
@@ -81,6 +101,8 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
       setProfitResults(true);
     }
   };
+  let upaidAmountInDollars =
+    unpaidBReceiversAmount.unpaidBReceiversAmount / (rates.sspRate / 100);
   let amountUgxtoDollars = totalBalances.ugxBalance / (rates.ugxRate / 100);
   let amountKshToDollars = totalBalances.kenyaBalance / (rates.kshRate / 100);
   let amountPoundsToDollars = totalBalances.sspBalance / (rates.sspRate / 100);
@@ -92,6 +114,7 @@ const CalculateCapital = ({ dollarsAccounts, sspAccounts, branches }) => {
     totalBalances.dollarsBalance;
   let totalBussinessMoneyIntheBussinessInDollars =
     totalMoneyIntheBussinessInDollars -
+    upaidAmountInDollars -
     dollarsBalance.dollarsBalance -
     poundsBallance.poundsBalance / (rates.sspRate / 100);
 

@@ -44,6 +44,18 @@ export const BranchProvider = ({ children }) => {
       throw error; // Rethrow the error to handle it in the component
     }
   };
+  const fetchUnpaidBankReceivers = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/branchToBranchTransfer/bank-unpaid-receivers"
+      );
+
+      return response.data; // Return array of users
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw error; // Rethrow the error to handle it in the component
+    }
+  };
 
   const deleteBranch = async (branchId) => {
     try {
@@ -89,6 +101,7 @@ export const BranchProvider = ({ children }) => {
         deleteBranch,
         updateBranches,
         fetchCreditorsAndDebtors,
+        fetchUnpaidBankReceivers,
       }}
     >
       {children}

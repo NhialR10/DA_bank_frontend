@@ -47,7 +47,7 @@ export const BranchProvider = ({ children }) => {
   const fetchUnpaidBankReceivers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/branchToBranchTransfer/bank-unpaid-receivers"
+        "https://trustlinks-api.onrender.com/api/branchToBranchTransfer/bank-unpaid-receivers"
       );
 
       return response.data; // Return array of users

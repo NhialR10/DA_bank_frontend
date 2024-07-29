@@ -242,6 +242,25 @@ const CalculateCapital = ({
                   justifyContent: "space-between",
                 }}
               >
+                <span>UNPAID MONEY($)</span>{" "}
+                <span
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {formatNumber(upaidAmountInDollars)}
+                </span>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
                 <span>NET PROFIT($)</span>{" "}
                 <span
                   style={{

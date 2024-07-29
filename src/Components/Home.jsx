@@ -19,6 +19,7 @@ const { formatNumber } = require("../utils");
 function Home() {
   const { userLogin } = useContext(AuthContext);
   const [activeBranch, setActiveBranch] = useState({});
+  const [loading, setLoading] = useState(true);
   const data = [
     {
       name: "Page A",
@@ -74,11 +75,17 @@ function Home() {
         setActiveBranch(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     getActiveBranch();
   }, [userLogin]); // Trigger fetchUsers() when fetchUsers changes
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main1 className="main1-container">
